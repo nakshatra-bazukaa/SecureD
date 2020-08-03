@@ -9,6 +9,8 @@ import androidx.room.Update;
 
 import com.bazukaa.secured.models.PasswordDetails;
 
+import java.util.List;
+
 @Dao
 public interface PasswordDetailsDao {
 
@@ -22,5 +24,5 @@ public interface PasswordDetailsDao {
     void update(PasswordDetails passwordDetails);
 
     @Query("SELECT * FROM pwd_details_table ORDER BY id DESC")
-    LiveData<PasswordDetails> getPasswordDetails();
+    LiveData<List<PasswordDetails>> getPasswordDetailsList();
 }

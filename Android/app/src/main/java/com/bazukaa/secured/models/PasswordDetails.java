@@ -13,12 +13,15 @@ public class PasswordDetails {
 
     private String details;
 
+    private String password;
+
     private long timeStamp;
 
-    public PasswordDetails(int id, String title, String details, long timeStamp) {
+    public PasswordDetails(int id, String title, String details, String password, long timeStamp) {
         this.id = id;
         this.title = title;
         this.details = details;
+        this.password = password;
         this.timeStamp = timeStamp;
     }
 
@@ -44,6 +47,14 @@ public class PasswordDetails {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public long getTimeStamp() {

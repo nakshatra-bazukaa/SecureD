@@ -1,7 +1,7 @@
 # Project Title
 password generator (An android application to generate password)
 # App Name
-StoreD
+SecureD
 # App Architecture 
 MVVM
 # Required Libraries

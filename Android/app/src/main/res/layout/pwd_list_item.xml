@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:elevation="4dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/card_pwd_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textColor="@color/colorAccent"
+            android:maxLines="2"
+            android:layout_alignParentTop="true"
+            android:ellipsize="end"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/card_pwd_tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="@color/colorAccent"
+            android:maxLines="10"
+            android:ellipsize="end"
+            android:layout_below="@+id/card_pwd_tv_title"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="sans-serif"
+            android:textSize="15sp"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/card_pwd_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4:40 PM 18/07/20"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@+id/card_pwd_tv_desc"
+            android:gravity="center|right"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:alpha="0.5"
+            android:layout_marginTop="6dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/card_pwd_tv_time"
+            android:gravity="center"
+            android:id="@+id/expandable_layout"
+            android:layout_margin="8dp">
+            <TextView
+                android:id="@+id/card_pwd_ev_tv_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap to copy password"
+                android:gravity="center"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="sans-serif"
+                android:textSize="13sp"
+                android:layout_marginTop="6dp"
+                />
+            <Button
+                android:id="@+id/card_pwd_ev_btn_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete Password"
+                android:gravity="center"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/card_pwd_ev_tv_pwd"
+                android:fontFamily="sans-serif"
+                android:textSize="13sp"
+                android:layout_marginTop="6dp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

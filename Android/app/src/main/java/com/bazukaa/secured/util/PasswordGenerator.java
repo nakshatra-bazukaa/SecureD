@@ -6,24 +6,24 @@ public class PasswordGenerator {
 
     public static char[] generatePassword(boolean haveBlockAlpha, boolean haveNonBlockAlpha, boolean haveSpecialChar, boolean haveNumeric, int len){
         char[] generatedPassword = new char[len];
-        String block_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String non_block_alpha = "abcdefghijklmnopqrstuvwxyz";
-        String special_char = "!@#$%^&*_=+-/.?<>)(";
+        String blockAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String nonBlockAlpha = "abcdefghijklmnopqrstuvwxyz";
+        String specialChar = "!@#$%^&*_=+-/.?<>)(";
         String numbers = "1234567890";
-        String allowed_values = "";
+        String allowedValues = "";
 
         if(haveBlockAlpha)
-            allowed_values += block_alpha;
+            allowedValues += blockAlpha;
         if(haveNonBlockAlpha)
-            allowed_values += non_block_alpha;
+            allowedValues += nonBlockAlpha;
         if(haveSpecialChar)
-            allowed_values += special_char;
+            allowedValues += specialChar;
         if(haveNumeric)
-            allowed_values += numbers;
+            allowedValues += numbers;
 
         Random random = new Random();
         for(int i = 0; i < len; i++)
-            generatedPassword[i] = allowed_values.charAt(random.nextInt(allowed_values.length()));
+            generatedPassword[i] = allowedValues.charAt(random.nextInt(allowedValues.length()));
 
         return generatedPassword;
     }

@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData;
 
 import com.bazukaa.secured.models.PasswordDetails;
 
+import java.util.List;
+
 public interface PasswordDetailsViewModelHelper {
 
     void insert(PasswordDetails passwordDetails);
@@ -12,6 +14,6 @@ public interface PasswordDetailsViewModelHelper {
 
     void delete(PasswordDetails passwordDetails);
 
-    LiveData<PasswordDetails> getPasswordDetails();
+    LiveData<List<PasswordDetails>> getPasswordDetailsList();
 
 }

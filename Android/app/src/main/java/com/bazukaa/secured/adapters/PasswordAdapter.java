@@ -19,10 +19,10 @@ import java.util.List;
 
 public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.PasswordHolder> {
 
-    private List<PasswordDetails> passwordDetails = new ArrayList<>();
+    private List<PasswordDetails> passwordDetailsList = new ArrayList<>();
 
-    public void setPasswords(List<PasswordDetails> passwordDetails){
-        this.passwordDetails = passwordDetails;
+    public void setPasswords(List<PasswordDetails> passwordDetailsList){
+        this.passwordDetailsList = passwordDetailsList;
         notifyDataSetChanged();
     }
 
@@ -34,7 +34,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
 
     @Override
     public void onBindViewHolder(@NonNull final PasswordHolder holder, int position) {
-        PasswordDetails currPwd = passwordDetails.get(position);
+        PasswordDetails currPwd = passwordDetailsList.get(position);
 
         holder.titleTv.setText(currPwd.getTitle());
         holder.timeTv.setText(TimeFromTimeStamp
@@ -63,7 +63,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
 
     @Override
     public int getItemCount() {
-        return passwordDetails.size();
+        return passwordDetailsList.size();
     }
 
     public class PasswordHolder extends RecyclerView.ViewHolder {
@@ -88,7 +88,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
     }
 
     public PasswordDetails getPasswordDetailsFromPosition(int position){
-        return passwordDetails.get(position);
+        return passwordDetailsList.get(position);
     }
 
 }

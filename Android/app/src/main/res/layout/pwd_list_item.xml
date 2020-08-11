@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/card_pwd_cv_pwdCard"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp"
     android:elevation="4dp"
@@ -66,7 +67,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:visibility="gone"
             android:layout_below="@+id/card_pwd_ll"
             android:gravity="center"
             android:id="@+id/expandable_layout"
@@ -96,7 +96,7 @@
                 android:layout_marginTop="6dp"
                 />
             <Button
-                android:id="@+id/card_pwd_ev_btn_pwd"
+                android:id="@+id/card_pwd_ev_btn_pwd_dlt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete Password"

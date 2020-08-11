@@ -68,6 +68,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/card_pwd_ll"
+            android:visibility="gone"
             android:gravity="center"
             android:id="@+id/expandable_layout"
             android:layout_margin="8dp">

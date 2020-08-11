@@ -1,25 +1,30 @@
 package com.bazukaa.secured.adapters;
 
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bazukaa.secured.R;
 import com.bazukaa.secured.models.PasswordDetails;
-
+import com.bazukaa.secured.util.TimeFromTimeStamp;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.PasswordHolder> {
 
     private List<PasswordDetails> passwordDetails = new ArrayList<>();
+
+    public void setPasswords(List<PasswordDetails> passwordDetails){
+        this.passwordDetails = passwordDetails;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -28,11 +33,32 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PasswordHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PasswordHolder holder, int position) {
         PasswordDetails currPwd = passwordDetails.get(position);
 
         holder.titleTv.setText(currPwd.getTitle());
-
+        holder.timeTv.setText(TimeFromTimeStamp
+                .formatTime(currPwd
+                        .getTimeStamp()
+                )
+        );
+        holder.descTv.setText(currPwd.getDetails());
+        holder.pwdTv.setText(currPwd.getPassword());
+        holder.arrDownBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.expandableView.getVisibility() == View.GONE){
+                    TransitionManager.beginDelayedTransition(holder.pwdCard, new AutoTransition());
+                    holder.expandableView.setVisibility(View.VISIBLE);
+                    holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
+                }
+                else{
+                    TransitionManager.beginDelayedTransition(holder.pwdCard, new AutoTransition());
+                    holder.expandableView.setVisibility(View.GONE);
+                    holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
+                }
+            }
+        });
     }
 
     @Override
@@ -60,4 +86,9 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
             expandableView = itemView.findViewById(R.id.expandable_layout);
         }
     }
+
+    public PasswordDetails getPasswordDetailsFromPosition(int position){
+        return passwordDetails.get(position);
+    }
+
 }

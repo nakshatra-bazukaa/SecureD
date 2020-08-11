@@ -21,50 +21,67 @@
             android:layout_height="wrap_content"
             android:text="Title"
             android:textColor="@color/colorAccent"
-            android:maxLines="2"
             android:layout_alignParentTop="true"
-            android:ellipsize="end"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:fontFamily="sans-serif-medium"
             android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/card_pwd_tv_desc"
+        <LinearLayout
+            android:id="@+id/card_pwd_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textColor="@color/colorAccent"
-            android:maxLines="10"
-            android:ellipsize="end"
-            android:layout_below="@+id/card_pwd_tv_title"
+            android:orientation="horizontal"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif"
-            android:textSize="15sp"
-            android:layout_marginTop="6dp"/>
-        <TextView
-            android:id="@+id/card_pwd_tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4:40 PM 18/07/20"
-            android:textColor="@color/colorAccent"
-            android:layout_below="@+id/card_pwd_tv_desc"
-            android:gravity="center|right"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif"
-            android:textSize="13sp"
-            android:alpha="0.5"
-            android:layout_marginTop="6dp"/>
+            android:layout_below="@+id/card_pwd_tv_title">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <TextView
+                    android:id="@+id/card_pwd_tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4:40 PM 18/07/20"
+                    android:textColor="@color/colorAccent"
+                    android:fontFamily="sans-serif"
+                    android:textSize="13sp"
+                    android:alpha="0.5"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <Button
+                    android:id="@+id/card_pwd_btn_down"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/card_pwd_tv_time"
+            android:visibility="gone"
+            android:layout_below="@+id/card_pwd_ll"
             android:gravity="center"
             android:id="@+id/expandable_layout"
             android:layout_margin="8dp">
+            <TextView
+                android:id="@+id/card_pwd_ev_tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="@color/colorAccent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="sans-serif"
+                android:textSize="15sp"
+                android:layout_marginTop="6dp"/>
             <TextView
                 android:id="@+id/card_pwd_ev_tv_pwd"
                 android:layout_width="wrap_content"
@@ -73,6 +90,7 @@
                 android:gravity="center"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
+                android:layout_below="@+id/card_pwd_ev_tv_desc"
                 android:fontFamily="sans-serif"
                 android:textSize="13sp"
                 android:layout_marginTop="6dp"

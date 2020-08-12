@@ -17,8 +17,7 @@ public class PasswordDetails {
 
     private long timeStamp;
 
-    public PasswordDetails(int id, String title, String details, String password, long timeStamp) {
-        this.id = id;
+    public PasswordDetails(String title, String details, String password, long timeStamp) {
         this.title = title;
         this.details = details;
         this.password = password;

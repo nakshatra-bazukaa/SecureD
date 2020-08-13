@@ -1,15 +1,12 @@
 package com.bazukaa.secured.viewmodel;
 
 import android.app.Application;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-
 import com.bazukaa.secured.models.PasswordDetails;
 import com.bazukaa.secured.repository.PasswordDetailsRepository;
 import com.bazukaa.secured.viewmodelhelper.PasswordDetailsViewModelHelper;
-
 import java.util.List;
 
 public class PasswordDetailsViewModel extends AndroidViewModel implements PasswordDetailsViewModelHelper {

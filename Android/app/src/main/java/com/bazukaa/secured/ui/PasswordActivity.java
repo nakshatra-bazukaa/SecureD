@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import com.bazukaa.secured.R;
 import com.bazukaa.secured.adapters.PasswordAdapter;
@@ -14,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PasswordActivity extends AppCompatActivity {
 
@@ -43,8 +46,11 @@ public class PasswordActivity extends AppCompatActivity {
                 adapter.setPasswords(passwordDetails);
             }
         });
-
-        // To create a new password
-
+    }
+    // To create a new password
+    @OnClick(R.id.act_pwd_fab_add)
+    public void onFabClicked(){
+        Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
+        startActivity(intent);
     }
 }

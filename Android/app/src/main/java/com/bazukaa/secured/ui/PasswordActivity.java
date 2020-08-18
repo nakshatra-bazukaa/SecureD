@@ -56,15 +56,15 @@ public class PasswordActivity extends AppCompatActivity {
                 adapter.setPasswords(passwordDetails);
             }
         });
-        // To delete a password
         adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
+            // To delete a password
             @Override
             public void onDeleteButtonClick(int position) {
                 PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
                 passwordDetailsViewModel.delete(passwordDetails);
                 adapter.notifyItemChanged(position);
             }
-
+            // To copy pwd to clip board
             @Override
             public void onPwdTvClicked(int position) {
                 PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
@@ -81,11 +81,9 @@ public class PasswordActivity extends AppCompatActivity {
         Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
         startActivityForResult(intent, ADD_PASSWORD_REQUEST);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if(requestCode == ADD_PASSWORD_REQUEST && resultCode == RESULT_OK){
             String title = data.getStringExtra(MakePasswordActivity.EXTRA_TITLE);
             String desc = data.getStringExtra(MakePasswordActivity.EXTRA_DESC);

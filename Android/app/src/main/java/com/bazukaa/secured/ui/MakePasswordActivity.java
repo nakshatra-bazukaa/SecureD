@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
+
 import com.bazukaa.secured.R;
 import com.bazukaa.secured.util.PasswordGenerator;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -29,8 +31,8 @@ public class MakePasswordActivity extends AppCompatActivity {
     EditText titleEditText;
     @BindView(R.id.act_mk_pwd_et_desc)
     EditText descEditText;
-    @BindView(R.id.act_mk_pwd_et_len)
-    EditText lengthEditText;
+    @BindView(R.id.act_mk_pwd_tv_len)
+    TextView lengthTextView;
     @BindView(R.id.act_mk_pwd_cb)
     CheckBox checkBox;
     @BindView(R.id.act_mk_pwd_slider)
@@ -49,12 +51,30 @@ public class MakePasswordActivity extends AppCompatActivity {
     ConstraintLayout checkedView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_password);
         ButterKnife.bind(this);
+        lengthSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                lengthTextView.setText("" + progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
+    // To handle click on checkbox
     @OnClick(R.id.act_mk_pwd_cb)
     public void onCheckBoxClicked(){
         if(checkBox.isChecked() == true && checkedView.getVisibility() == View.GONE){
@@ -63,6 +83,8 @@ public class MakePasswordActivity extends AppCompatActivity {
             checkedView.setVisibility(View.GONE);
         }
     }
+
+    // To process and save the generated password
     private void savePassword(){
         String generatedPwd = null;
         if(checkBox.isChecked() == true){
@@ -70,7 +92,7 @@ public class MakePasswordActivity extends AppCompatActivity {
             boolean smallLetters = smallLetterSwitch.isChecked();
             boolean numeric = numSwitch.isChecked();
             boolean splChars = splCharSwitch.isChecked();
-            int len = Integer.parseInt(lengthEditText.getText().toString());
+            int len = Integer.parseInt(lengthTextView.getText().toString());
 
             generatedPwd = PasswordGenerator.generateCustomPassword(blockLetters, smallLetters, splChars, numeric, len);
         }else{
@@ -89,6 +111,7 @@ public class MakePasswordActivity extends AppCompatActivity {
         setResult(RESULT_OK, data);
         finish();
     }
+
     @OnClick(R.id.act_mk_pwd_btn_gen_pwd)
     public void onGeneratePwdButtonClicked(){
         savePassword();

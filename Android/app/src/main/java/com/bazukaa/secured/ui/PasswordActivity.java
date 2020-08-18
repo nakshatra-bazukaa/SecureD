@@ -1,5 +1,6 @@
 package com.bazukaa.secured.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.bazukaa.secured.R;
 import com.bazukaa.secured.adapters.PasswordAdapter;
 import com.bazukaa.secured.models.PasswordDetails;
@@ -19,6 +22,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class PasswordActivity extends AppCompatActivity {
+
+    public static final int ADD_PASSWORD_REQUEST = 1;
 
     private PasswordDetailsViewModel passwordDetailsViewModel;
 
@@ -51,6 +56,25 @@ public class PasswordActivity extends AppCompatActivity {
     @OnClick(R.id.act_pwd_fab_add)
     public void onFabClicked(){
         Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, ADD_PASSWORD_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == ADD_PASSWORD_REQUEST && resultCode == RESULT_OK){
+            String title = null;
+            String desc = null;
+            String pwd = null;
+            long timeStamp = 0;
+
+            PasswordDetails passwordDetails = new PasswordDetails(title, desc, pwd, timeStamp);
+            passwordDetailsViewModel.insert(passwordDetails);
+
+            Toast.makeText(this, "Password Generated Successfully", Toast.LENGTH_SHORT).show();
+        }else if(requestCode == ADD_PASSWORD_REQUEST){
+            Toast.makeText(this, "Password Not Generated", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -28,8 +28,11 @@ public class PasswordActivity extends AppCompatActivity {
     private PasswordDetailsViewModel passwordDetailsViewModel;
 
     private Toolbar toolbar;
-    @BindView(R.id.act_pwd_rv) RecyclerView passwordDetailsRecyclerView;
-    @BindView(R.id.act_pwd_fab_add) FloatingActionButton addButton;
+    @BindView(R.id.act_pwd_rv)
+    RecyclerView passwordDetailsRecyclerView;
+    @BindView(R.id.act_pwd_fab_add)
+    FloatingActionButton addButton;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,26 +59,25 @@ public class PasswordActivity extends AppCompatActivity {
     @OnClick(R.id.act_pwd_fab_add)
     public void onFabClicked(){
         Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
-        startActivity(intent);
-        //        startActivityForResult(intent, ADD_PASSWORD_REQUEST);
+        startActivityForResult(intent, ADD_PASSWORD_REQUEST);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if(requestCode == ADD_PASSWORD_REQUEST && resultCode == RESULT_OK){
-//            String title = null;
-//            String desc = null;
-//            String pwd = null;
-//            long timeStamp = 0;
-//
-//            PasswordDetails passwordDetails = new PasswordDetails(title, desc, pwd, timeStamp);
-//            passwordDetailsViewModel.insert(passwordDetails);
-//
-//            Toast.makeText(this, "Password Generated Successfully", Toast.LENGTH_SHORT).show();
-//        }else if(requestCode == ADD_PASSWORD_REQUEST){
-//            Toast.makeText(this, "Password Not Generated", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == ADD_PASSWORD_REQUEST && resultCode == RESULT_OK){
+            String title = data.getStringExtra(MakePasswordActivity.EXTRA_TITLE);
+            String desc = data.getStringExtra(MakePasswordActivity.EXTRA_DESC);
+            String pwd = data.getStringExtra(MakePasswordActivity.EXTRA_PWD);
+            long timeStamp = data.getLongExtra(MakePasswordActivity.EXTRA_TIMESTAMP, 10000);
+
+            PasswordDetails passwordDetails = new PasswordDetails(title, desc, pwd, timeStamp);
+            passwordDetailsViewModel.insert(passwordDetails);
+
+            Toast.makeText(this, "Password Generated Successfully", Toast.LENGTH_SHORT).show();
+        }else if(requestCode == ADD_PASSWORD_REQUEST){
+            Toast.makeText(this, "Password Not Generated", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -20,6 +20,7 @@ import java.util.List;
 public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.PasswordHolder> {
 
     private List<PasswordDetails> passwordDetailsList = new ArrayList<>();
+    private OnItemClickListener listener;
 
     public void setPasswords(List<PasswordDetails> passwordDetailsList){
         this.passwordDetailsList = passwordDetailsList;
@@ -84,11 +85,33 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
             deleteBtn = itemView.findViewById(R.id.card_pwd_ev_btn_pwd_dlt);
             pwdCard = itemView.findViewById(R.id.card_pwd_cv_pwdCard);
             expandableView = itemView.findViewById(R.id.expandable_layout);
+
+            deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION){
+                        listener.onDeleteButtonClick(position);
+                    }
+                }
+            });
         }
     }
 
     public PasswordDetails getPasswordDetailsFromPosition(int position){
         return passwordDetailsList.get(position);
+    }
+
+    public PasswordDetails getPasswordDetailPosition(int position){
+        return passwordDetailsList.get(position);
+    }
+
+    public interface OnItemClickListener{
+        void onDeleteButtonClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 
 }

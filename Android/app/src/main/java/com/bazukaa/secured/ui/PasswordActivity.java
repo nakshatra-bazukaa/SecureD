@@ -32,7 +32,6 @@ public class PasswordActivity extends AppCompatActivity {
     RecyclerView passwordDetailsRecyclerView;
     @BindView(R.id.act_pwd_fab_add)
     FloatingActionButton addButton;
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +51,15 @@ public class PasswordActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<PasswordDetails> passwordDetails) {
                 adapter.setPasswords(passwordDetails);
+            }
+        });
+        // To delete a password
+        adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
+            @Override
+            public void onDeleteButtonClick(int position) {
+                PasswordDetails passwordDetails = adapter.getPasswordDetailPosition(position);
+                passwordDetailsViewModel.delete(passwordDetails);
+                adapter.notifyDataSetChanged();
             }
         });
     }

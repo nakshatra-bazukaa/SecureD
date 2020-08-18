@@ -59,7 +59,7 @@ public class PasswordActivity extends AppCompatActivity {
             public void onDeleteButtonClick(int position) {
                 PasswordDetails passwordDetails = adapter.getPasswordDetailPosition(position);
                 passwordDetailsViewModel.delete(passwordDetails);
-                adapter.notifyDataSetChanged();
+                adapter.notifyItemChanged(position);
             }
         });
     }

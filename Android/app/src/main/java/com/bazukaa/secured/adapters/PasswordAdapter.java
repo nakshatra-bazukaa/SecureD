@@ -46,7 +46,6 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                 )
         );
         holder.descTv.setText(currPwd.getDetails());
-        holder.pwdTv.setText(currPwd.getPassword());
         holder.arrDownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +55,6 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                     holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
                 }
                 else{
-//                    TransitionManager.beginDelayedTransition(holder.pwdCard, new AutoTransition());
                     holder.expandableView.setVisibility(View.GONE);
                     holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
                 }

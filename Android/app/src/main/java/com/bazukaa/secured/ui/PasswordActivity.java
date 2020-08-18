@@ -56,25 +56,26 @@ public class PasswordActivity extends AppCompatActivity {
     @OnClick(R.id.act_pwd_fab_add)
     public void onFabClicked(){
         Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
-        startActivityForResult(intent, ADD_PASSWORD_REQUEST);
+        startActivity(intent);
+        //        startActivityForResult(intent, ADD_PASSWORD_REQUEST);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == ADD_PASSWORD_REQUEST && resultCode == RESULT_OK){
-            String title = null;
-            String desc = null;
-            String pwd = null;
-            long timeStamp = 0;
-
-            PasswordDetails passwordDetails = new PasswordDetails(title, desc, pwd, timeStamp);
-            passwordDetailsViewModel.insert(passwordDetails);
-
-            Toast.makeText(this, "Password Generated Successfully", Toast.LENGTH_SHORT).show();
-        }else if(requestCode == ADD_PASSWORD_REQUEST){
-            Toast.makeText(this, "Password Not Generated", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if(requestCode == ADD_PASSWORD_REQUEST && resultCode == RESULT_OK){
+//            String title = null;
+//            String desc = null;
+//            String pwd = null;
+//            long timeStamp = 0;
+//
+//            PasswordDetails passwordDetails = new PasswordDetails(title, desc, pwd, timeStamp);
+//            passwordDetailsViewModel.insert(passwordDetails);
+//
+//            Toast.makeText(this, "Password Generated Successfully", Toast.LENGTH_SHORT).show();
+//        }else if(requestCode == ADD_PASSWORD_REQUEST){
+//            Toast.makeText(this, "Password Not Generated", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }

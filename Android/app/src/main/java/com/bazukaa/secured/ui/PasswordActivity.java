@@ -7,6 +7,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -57,9 +60,18 @@ public class PasswordActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
             @Override
             public void onDeleteButtonClick(int position) {
-                PasswordDetails passwordDetails = adapter.getPasswordDetailPosition(position);
+                PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
                 passwordDetailsViewModel.delete(passwordDetails);
                 adapter.notifyItemChanged(position);
+            }
+
+            @Override
+            public void onPwdTvClicked(int position) {
+                PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Password copied to clipboard", passwordDetails.getPassword());
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(PasswordActivity.this, "Password copied to clipboard", Toast.LENGTH_SHORT).show();
             }
         });
     }

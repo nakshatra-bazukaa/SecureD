@@ -1,5 +1,7 @@
 package com.bazukaa.secured.adapters;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -95,6 +97,16 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                     }
                 }
             });
+            pwdTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION){
+                        listener.onPwdTvClicked(position);
+                    }
+                }
+            });
+
         }
     }
 
@@ -102,12 +114,10 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
         return passwordDetailsList.get(position);
     }
 
-    public PasswordDetails getPasswordDetailPosition(int position){
-        return passwordDetailsList.get(position);
-    }
 
     public interface OnItemClickListener{
         void onDeleteButtonClick(int position);
+        void onPwdTvClicked(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){

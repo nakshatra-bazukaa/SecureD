@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -30,14 +32,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PasswordActivity extends AppCompatActivity {
 
     public static final int ADD_PASSWORD_REQUEST = 1;
 
     private PasswordDetailsViewModel passwordDetailsViewModel;
-
-    private MenuItem settings;
 
     private Toolbar toolbar;
     @BindView(R.id.act_pwd_rv)
@@ -54,6 +55,7 @@ public class PasswordActivity extends AppCompatActivity {
         // Setting up toolbar
         toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
 
         // Setting up recyclerview
         final PasswordAdapter adapter = new PasswordAdapter();
@@ -65,6 +67,7 @@ public class PasswordActivity extends AppCompatActivity {
                 adapter.setPasswords(passwordDetails);
             }
         });
+
         adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
             // To delete a password
             @Override
@@ -98,6 +101,7 @@ public class PasswordActivity extends AppCompatActivity {
 
                 alertDialog.show();
             }
+
             // To copy pwd to clip board
             @Override
             public void onPwdTvClicked(int position) {
@@ -133,22 +137,48 @@ public class PasswordActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_activity_password, menu);
-//        return super.onPrepareOptionsMenu(menu);
-//    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_password, menu);
-        settings = menu.findItem(R.id.menu_act_pwd_item_settings);
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    // Function to setup and open settings dialog
+    public void openSettings(){
+        final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
+        View view = getLayoutInflater().inflate(R.layout.setting_dialog, null);
+        Button dismissBtn = view.findViewById(R.id.dialog_setting_btn_dismiss);
+        Button dltAllPwdBtn = view.findViewById(R.id.dialog_setting_btn_delete_all);
+        Button addFingerUnlockBtn = view.findViewById(R.id.dialog_setting_btn_add_finger_unlock);
+        Button seeSrcCodeBtn = view.findViewById(R.id.dialog_setting_btn_see_source_code);
+        Button giveFeedback = view.findViewById(R.id.dialog_setting_btn_feedback);
+        alert.setView(view);
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+
+        dismissBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        dltAllPwdBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passwordDetailsViewModel.deleteAllPasswords();
+            }
+        });
+        alertDialog.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_act_pwd_item_settings:
+                openSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

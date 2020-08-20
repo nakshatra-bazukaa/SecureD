@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bazukaa.secured.R;
+import com.bazukaa.secured.authentication.FingerprintHandler;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -57,11 +58,11 @@ public class FingerprintAuthenticationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fingerprint_authentication);
         ButterKnife.bind(this);
 
-        checkRequirements();
+        setupFingerprintAuth();
 
     }
     // To check whether the app is ready to use fingerprint auth
-    private void checkRequirements(){
+    private void setupFingerprintAuth(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
             keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);

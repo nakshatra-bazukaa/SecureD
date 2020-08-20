@@ -1,4 +1,4 @@
-package com.bazukaa.secured.ui;
+package com.bazukaa.secured.authentication;
 
 import android.app.Activity;
 import android.content.Context;

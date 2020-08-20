@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="Are you sure?"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:gravity="center"/>
 
     <LinearLayout
@@ -24,6 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:text="Delete"
+            android:textSize="20dp"
+            android:background="@drawable/roundedbutton"
+            android:textColor="#ffffff"
             android:textAllCaps="false"
             android:layout_weight="1"/>
         <Button
@@ -32,6 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:text="Cancel"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/roundedbutton"
             android:textAllCaps="false"
             android:layout_weight="1"/>
 

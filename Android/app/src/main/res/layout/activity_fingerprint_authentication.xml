@@ -24,7 +24,7 @@
         android:layout_height="72dp"
         android:layout_below="@+id/act_finger_print_auth_tv_title"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/fingerprint" />
 
     <TextView
         android:id="@+id/act_finger_print_auth_tv_label"

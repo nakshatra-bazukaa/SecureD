@@ -57,6 +57,15 @@ public class PasswordActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
 
+        // Profile dialog
+        CircleImageView civ = findViewById(R.id.profile_image);
+        civ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PasswordActivity.this, "CIV Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // Setting up recyclerview
         final PasswordAdapter adapter = new PasswordAdapter();
         passwordDetailsRecyclerView.setAdapter(adapter);

@@ -41,11 +41,11 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
 
         holder.titleTv.setText(currPwd.getTitle());
         holder.timeTv.setText(TimeFromTimeStamp
-                .formatTime(currPwd
-                        .getTimeStamp()
-                )
+                .formatTime(currPwd.getTimeStamp())
         );
         holder.descTv.setText(currPwd.getDetails());
+
+        // To handle extendable card behaviour
         holder.arrDownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +73,6 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
         private CardView pwdCard;
         private RelativeLayout expandableView;
 
-
         public PasswordHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -86,6 +85,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
             pwdCard = itemView.findViewById(R.id.card_pwd_cv_pwdCard);
             expandableView = itemView.findViewById(R.id.expandable_layout);
 
+            // Delete button setup
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -95,6 +95,8 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                     }
                 }
             });
+
+            // Tap to copy to clipboard setup
             pwdTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -104,7 +106,6 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                     }
                 }
             });
-
         }
     }
 
@@ -121,5 +122,4 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
-
 }

@@ -1,6 +1,7 @@
 package com.bazukaa.secured.ui;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -12,6 +13,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.bazukaa.secured.R;
@@ -61,8 +64,31 @@ public class PasswordActivity extends AppCompatActivity {
             @Override
             public void onDeleteButtonClick(int position) {
                 PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
-                passwordDetailsViewModel.delete(passwordDetails);
-                adapter.notifyItemChanged(position);
+
+                final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
+                View view = getLayoutInflater().inflate(R.layout.confirm_delete_dialog, null);
+                Button deleteButton = view.findViewById(R.id.confirm_delete_dialog_btn_delete);
+                Button cancelButton = view.findViewById(R.id.confirm_delete_dialog_btn_cancel);
+                alert.setView(view);
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.setCanceledOnTouchOutside(false);
+
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        passwordDetailsViewModel.delete(passwordDetails);
+                        adapter.notifyItemChanged(position);
+                    }
+                });
+
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.show();
             }
             // To copy pwd to clip board
             @Override

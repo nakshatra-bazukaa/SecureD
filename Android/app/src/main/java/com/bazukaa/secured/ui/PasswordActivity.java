@@ -210,6 +210,10 @@ public class PasswordActivity extends AppCompatActivity {
 
             alertDialog1.show();
         });
+        // Add fingerprint auth
+        addFingerUnlockBtn.setOnClickListener(v -> {
+            startActivity(new Intent(getBaseContext(), FingerprintAuthenticationActivity.class));
+        });
 
         // See source code
         seeSrcCodeBtn.setOnClickListener(v -> {

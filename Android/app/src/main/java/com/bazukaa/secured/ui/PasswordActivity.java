@@ -1,5 +1,6 @@
 package com.bazukaa.secured.ui;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,9 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -32,6 +36,8 @@ public class PasswordActivity extends AppCompatActivity {
     public static final int ADD_PASSWORD_REQUEST = 1;
 
     private PasswordDetailsViewModel passwordDetailsViewModel;
+
+    private MenuItem settings;
 
     private Toolbar toolbar;
     @BindView(R.id.act_pwd_rv)
@@ -77,7 +83,9 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         passwordDetailsViewModel.delete(passwordDetails);
-                        adapter.notifyItemChanged(position);
+                        passwordDetailsRecyclerView.removeViewAt(position);
+                        adapter.notifyItemRemoved(position);
+                        alertDialog.dismiss();
                     }
                 });
 
@@ -124,4 +132,23 @@ public class PasswordActivity extends AppCompatActivity {
             Toast.makeText(this, "Password Not Generated", Toast.LENGTH_SHORT).show();
         }
     }
+
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_activity_password, menu);
+//        return super.onPrepareOptionsMenu(menu);
+//    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_password, menu);
+        settings = menu.findItem(R.id.menu_act_pwd_item_settings);
+        return true;
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }

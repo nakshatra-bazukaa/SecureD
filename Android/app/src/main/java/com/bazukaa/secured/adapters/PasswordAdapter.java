@@ -1,7 +1,5 @@
 package com.bazukaa.secured.adapters;
 
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -68,6 +66,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
     }
 
     public class PasswordHolder extends RecyclerView.ViewHolder {
+        // Declaring views
         private TextView titleTv, timeTv, descTv, pwdTv;
         private Button arrDownBtn, deleteBtn;
         private CardView pwdCard;
@@ -75,7 +74,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
 
         public PasswordHolder(@NonNull View itemView) {
             super(itemView);
-
+            // Setting up views by providing them id
             titleTv = itemView.findViewById(R.id.card_pwd_tv_title);
             timeTv = itemView.findViewById(R.id.card_pwd_tv_time);
             descTv = itemView.findViewById(R.id.card_pwd_ev_tv_desc);
@@ -84,7 +83,6 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
             deleteBtn = itemView.findViewById(R.id.card_pwd_ev_btn_pwd_dlt);
             pwdCard = itemView.findViewById(R.id.card_pwd_cv_pwdCard);
             expandableView = itemView.findViewById(R.id.expandable_layout);
-
             // Delete button setup
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +93,6 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                     }
                 }
             });
-
             // Tap to copy to clipboard setup
             pwdTv.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,7 +110,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
         return passwordDetailsList.get(position);
     }
 
-
+    // Interface to set up click listener
     public interface OnItemClickListener{
         void onDeleteButtonClick(int position);
         void onPwdTvClicked(int position);

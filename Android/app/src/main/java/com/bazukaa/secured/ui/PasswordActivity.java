@@ -182,45 +182,44 @@ public class PasswordActivity extends AppCompatActivity {
         Button dltAllPwdBtn = view.findViewById(R.id.dialog_setting_btn_delete_all);
         Button addFingerUnlockBtn = view.findViewById(R.id.dialog_setting_btn_add_finger_unlock);
         Button seeSrcCodeBtn = view.findViewById(R.id.dialog_setting_btn_see_source_code);
-        Button giveFeedback = view.findViewById(R.id.dialog_setting_btn_feedback);
+        Button giveFeedbackBtn = view.findViewById(R.id.dialog_setting_btn_feedback);
         alert.setView(view);
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
-        dismissBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
+        // Dismiss button click
+        dismissBtn.setOnClickListener(v -> alertDialog.dismiss());
+
+        // Delete all passwords button click
+        dltAllPwdBtn.setOnClickListener(v -> {
+            final AlertDialog.Builder alert1 = new AlertDialog.Builder(PasswordActivity.this);
+            View view1 = getLayoutInflater().inflate(R.layout.confirm_delete_all_dialog, null);
+            Button deleteButton = view1.findViewById(R.id.confirm_delete_all_dialog_btn_delete);
+            Button cancelButton = view1.findViewById(R.id.confirm_delete_all_dialog_btn_cancel);
+            alert1.setView(view1);
+            final AlertDialog alertDialog1 = alert1.create();
+            alertDialog1.setCanceledOnTouchOutside(false);
+
+            deleteButton.setOnClickListener(v12 -> {
+                passwordDetailsViewModel.deleteAllPasswords();
+                alertDialog1.dismiss();
+            });
+
+            cancelButton.setOnClickListener(v1 -> alertDialog1.dismiss());
+
+            alertDialog1.show();
         });
-        dltAllPwdBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
-                View view = getLayoutInflater().inflate(R.layout.confirm_delete_all_dialog, null);
-                Button deleteButton = view.findViewById(R.id.confirm_delete_all_dialog_btn_delete);
-                Button cancelButton = view.findViewById(R.id.confirm_delete_all_dialog_btn_cancel);
-                alert.setView(view);
-                final AlertDialog alertDialog = alert.create();
-                alertDialog.setCanceledOnTouchOutside(false);
 
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        passwordDetailsViewModel.deleteAllPasswords();
-                        alertDialog.dismiss();
-                    }
-                });
-
-                cancelButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-
-                alertDialog.show();
-            }
+        // See source code
+        seeSrcCodeBtn.setOnClickListener(v -> {
+            
+        });
+        // Give feedback button click
+        giveFeedbackBtn.setOnClickListener(v -> {
+            Intent sendEmailIntent = new Intent(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"secured.bazukaa@gmail.com"});
+            intent.setType("message/rfc883");
+            startActivity(Intent.createChooser(intent, "Choose an email client"));
         });
         alertDialog.show();
     }

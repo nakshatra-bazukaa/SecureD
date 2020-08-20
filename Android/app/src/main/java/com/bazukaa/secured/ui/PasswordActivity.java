@@ -62,7 +62,29 @@ public class PasswordActivity extends AppCompatActivity {
         civ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(PasswordActivity.this, "CIV Clicked", Toast.LENGTH_SHORT).show();
+                final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
+                View view = getLayoutInflater().inflate(R.layout.profile_dialog, null);
+                Button okBtn = view.findViewById(R.id.dialog_profile_btn_ok);
+                Button cancelBtn = view.findViewById(R.id.dialog_profile_btn_cancel);
+                alert.setView(view);
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.setCanceledOnTouchOutside(false);
+
+                okBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.show();
             }
         });
 

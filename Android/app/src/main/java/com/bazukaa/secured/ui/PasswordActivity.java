@@ -212,14 +212,14 @@ public class PasswordActivity extends AppCompatActivity {
 
         // See source code
         seeSrcCodeBtn.setOnClickListener(v -> {
-            
+
         });
         // Give feedback button click
         giveFeedbackBtn.setOnClickListener(v -> {
             Intent sendEmailIntent = new Intent(Intent.ACTION_SEND);
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"secured.bazukaa@gmail.com"});
-            intent.setType("message/rfc883");
-            startActivity(Intent.createChooser(intent, "Choose an email client"));
+            sendEmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"secured.bazukaa@gmail.com"});
+            sendEmailIntent.setType("message/rfc883");
+            startActivity(Intent.createChooser(sendEmailIntent, "Choose an email client"));
         });
         alertDialog.show();
     }

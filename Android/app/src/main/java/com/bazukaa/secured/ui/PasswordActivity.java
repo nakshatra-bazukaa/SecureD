@@ -15,6 +15,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -212,7 +213,9 @@ public class PasswordActivity extends AppCompatActivity {
 
         // See source code
         seeSrcCodeBtn.setOnClickListener(v -> {
-
+            Intent seeSrcCodeIntent = new Intent(Intent.ACTION_VIEW);
+            seeSrcCodeIntent.setData(Uri.parse("https://github.com/nakshatra-bazukaa/news-app-2"));
+            startActivity(seeSrcCodeIntent);
         });
         // Give feedback button click
         giveFeedbackBtn.setOnClickListener(v -> {

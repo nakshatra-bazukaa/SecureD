@@ -196,7 +196,30 @@ public class PasswordActivity extends AppCompatActivity {
         dltAllPwdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                passwordDetailsViewModel.deleteAllPasswords();
+                final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
+                View view = getLayoutInflater().inflate(R.layout.confirm_delete_all_dialog, null);
+                Button deleteButton = view.findViewById(R.id.confirm_delete_all_dialog_btn_delete);
+                Button cancelButton = view.findViewById(R.id.confirm_delete_all_dialog_btn_cancel);
+                alert.setView(view);
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.setCanceledOnTouchOutside(false);
+
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        passwordDetailsViewModel.deleteAllPasswords();
+                        alertDialog.dismiss();
+                    }
+                });
+
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.show();
             }
         });
         alertDialog.show();

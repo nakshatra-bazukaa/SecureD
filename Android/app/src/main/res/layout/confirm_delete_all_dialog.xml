@@ -32,6 +32,7 @@
             android:text="Delete"
             android:background="@drawable/roundedbutton"
             android:textAllCaps="false"
+            android:textColor="#ffffff"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/confirm_delete_all_dialog_btn_cancel"
@@ -40,6 +41,7 @@
             android:layout_marginHorizontal="5dp"
             android:background="@drawable/roundedbutton"
             android:text="Cancel"
+            android:textColor="#ffffff"
             android:textAllCaps="false"
             android:layout_weight="1"/>
 

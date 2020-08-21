@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import com.bazukaa.secured.R;
 
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
+
     private Context context;
 
     public FingerprintHandler(Context context) {

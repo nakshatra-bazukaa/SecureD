@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="Are you sure?"
-        android:textSize="20dp"
+        android:textSize="22sp"
+        android:fontFamily="@font/graphik_semibold"
+        android:textColor="@color/colorFontDark"
         android:gravity="center"/>
 
     <LinearLayout
@@ -23,10 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/graphik_semibold"
+            android:textColor="@color/colorFontWhite"
             android:text="Delete"
-            android:textSize="20dp"
             android:background="@drawable/roundedbutton"
-            android:textColor="#ffffff"
             android:textAllCaps="false"
             android:layout_weight="1"/>
         <Button
@@ -34,10 +37,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/graphik_semibold"
+            android:textColor="@color/colorFontDark"
             android:text="Cancel"
-            android:textSize="20dp"
-            android:textColor="#ffffff"
             android:background="@drawable/roundedbutton"
+            android:backgroundTint="@color/colorFontWhite"
             android:textAllCaps="false"
             android:layout_weight="1"/>
 

@@ -6,5 +6,9 @@
     <color name="colorPrimaryLight">#dcf4fd</color>
     <color name="colorError">#FF0000</color>
     <color name="colorAccepted">#32CD32</color>
+<!--Font colors-->
+    <color name="colorFontWhite">#FFFFFF</color>
+    <color name="colorFontDark">#074576</color>
+
 
 </resources>

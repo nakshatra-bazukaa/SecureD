@@ -16,8 +16,11 @@ import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -36,6 +39,10 @@ import com.bazukaa.secured.models.PasswordDetails;
 import com.bazukaa.secured.viewmodel.PasswordDetailsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import butterknife.BindView;
@@ -48,18 +55,24 @@ public class PasswordActivity extends AppCompatActivity {
     public static final int ADD_PASSWORD_REQUEST = 1;
     public static final int PICK_IMAGE_REQUEST = 100;
 
+    public static final String SHARED_PREFERENCE = "sharedPrefs";
+    public static final String PATH = "path";
+
     private PasswordDetailsViewModel passwordDetailsViewModel;
 
     private Uri imgFilePath;
-    private Bitmap imgToStore;
+    private Bitmap imgToStore = null;
+    private CircleImageView dialogProfileImg;
+    private String path;
 
     private Toolbar toolbar;
     @BindView(R.id.act_pwd_rv)
     RecyclerView passwordDetailsRecyclerView;
     @BindView(R.id.act_pwd_fab_add)
     FloatingActionButton addButton;
+    @BindView(R.id.profile_image)
+    CircleImageView civ;
 
-    CircleImageView profileImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,34 +80,53 @@ public class PasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_password);
         ButterKnife.bind(this);
 
+        loadData();
+        loadFromStorageForToolbarCiv(path);
         // Setting up toolbar
         toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // Profile dialog
-        CircleImageView civ = findViewById(R.id.profile_image);
         civ.setOnClickListener(v -> {
             final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this, R.style.AlertDialogTheme);
             View view = LayoutInflater.from(PasswordActivity.this).inflate(R.layout.profile_dialog, findViewById(R.id.profile_dialog_container));
             Button okBtn = view.findViewById(R.id.dialog_profile_btn_ok);
             Button cancelBtn = view.findViewById(R.id.dialog_profile_btn_cancel);
+            dialogProfileImg = view.findViewById(R.id.dialog_profile_pic_civ_profile);
             LinearLayout tapToEdit = view.findViewById(R.id.dialog_profile_ll_tap_to_edit);
+
+            try {
+                File f = new File(path, "profile.jpg");
+                Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+                dialogProfileImg.setImageBitmap(b);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
             alert.setView(view);
             final AlertDialog alertDialog = alert.create();
             alertDialog.setCanceledOnTouchOutside(false);
 
+            // TO pick an image from the gallery
             tapToEdit.setOnClickListener(v13 -> {
                 Intent imgIntent = new Intent();
                 imgIntent.setType("image/*");
-
                 imgIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(imgIntent, PICK_IMAGE_REQUEST);
-                profileImg = view.findViewById(R.id.dialog_profile_pic_civ_profile);
             });
 
-            okBtn.setOnClickListener(v1 -> alertDialog.dismiss());
+            // To save the picked image
+            okBtn.setOnClickListener(v1 -> {
+                if(imgToStore != null){
+                    String path = saveToStorage(imgToStore);
+                    saveData(path);
+                    loadFromStorageForToolbarCiv(path);
+                }
+                alertDialog.dismiss();
+            });
 
+            // To cancel the process
             cancelBtn.setOnClickListener(v12 -> alertDialog.dismiss());
 
             alertDialog.show();
@@ -211,6 +243,46 @@ public class PasswordActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    private String saveToStorage(Bitmap bitmapImg){
+        ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
+        File directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE);
+        File mypath = new File(directory,"profile.jpg");
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            bitmapImg.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
+    private void loadFromStorageForToolbarCiv(String path){
+        try {
+            File f = new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            civ.setImageBitmap(b);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void saveData(String path){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(PATH, path);
+        editor.apply();
+        Toast.makeText(this, "Pic Saved", Toast.LENGTH_SHORT).show();
+    }
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
+        path = sharedPreferences.getString(PATH, null);
+     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -232,12 +304,10 @@ public class PasswordActivity extends AppCompatActivity {
 
             try {
                 imgToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imgFilePath);
-                profileImg.setImageBitmap(imgToStore);
+                dialogProfileImg.setImageBitmap(imgToStore);
             } catch (IOException e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-
-
         }
     }
     @Override

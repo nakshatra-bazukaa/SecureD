@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
-            android:textSize="11sp"
+            android:textSize="15sp"
             android:fontFamily="@font/graphik_medium"
             android:textColor="@color/colorFontWhite"
             android:text="Tap to edit" />
@@ -71,14 +71,16 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_done_24px"
-            android:backgroundTint="@color/colorFontDark"
+            />
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="0dp"
             />
         <Button
             android:id="@+id/dialog_profile_btn_cancel"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_clear_24px"
-            android:backgroundTint="@color/colorFontDark"
             />
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
@@ -11,8 +12,8 @@
         android:layout_height="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/ic_clear_24px"
-        android:backgroundTint="@color/colorFontDark"/>
+        android:background="@drawable/cancel_vec"
+        android:backgroundTint="@color/colorPrimaryDark"/>
     <TextView
         android:id="@+id/dialog_setting_tv_title"
         android:layout_width="wrap_content"
@@ -21,10 +22,12 @@
         android:fontFamily="@font/graphik_semibold"
         android:textColor="@color/colorFontDark"
         android:text="Settings"
-        android:paddingBottom="5dp"
+        android:background="@drawable/settings_und"
+        android:paddingBottom="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_setting_btn_dismiss"/>
+
     <LinearLayout
         android:id="@+id/dialog_setting_ll_switch"
         android:layout_width="match_parent"
@@ -60,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:paddingHorizontal="20dp"
-        android:background="@drawable/roundedbutton"
+        android:background="@drawable/delete_button"
         android:textSize="18sp"
         android:fontFamily="@font/graphik_regular"
         android:textColor="@color/colorFontWhite"
@@ -81,7 +84,7 @@
         android:fontFamily="@font/graphik_regular"
         android:textColor="@color/colorFontDark"
         android:backgroundTint="@color/colorFontWhite"
-        android:background="@drawable/roundedbutton"
+        android:background="@drawable/delete_button"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/dialog_setting_btn_delete_all"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:paddingHorizontal="20dp"
-        android:background="@drawable/roundedbutton"
+        android:background="@drawable/delete_button"
         android:textSize="18sp"
         android:fontFamily="@font/graphik_regular"
         android:textColor="@color/colorFontDark"
@@ -114,7 +117,7 @@
         android:fontFamily="@font/graphik_regular"
         android:textColor="@color/colorFontDark"
         android:backgroundTint="@color/colorFontWhite"
-        android:background="@drawable/roundedbutton"
+        android:background="@drawable/delete_button"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/dialog_setting_btn_see_source_code"
         app:layout_constraintStart_toStartOf="parent"

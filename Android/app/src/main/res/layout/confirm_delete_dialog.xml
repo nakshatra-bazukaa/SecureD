@@ -2,13 +2,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="800dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+
     android:gravity="center">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:padding="15dp"
         android:text="Are you sure?"
         android:textSize="22sp"
         android:fontFamily="@font/graphik_semibold"
@@ -29,7 +30,7 @@
             android:fontFamily="@font/graphik_semibold"
             android:textColor="@color/colorFontWhite"
             android:text="Delete"
-            android:background="@drawable/roundedbutton"
+            android:background="@drawable/delete_button"
             android:textAllCaps="false"
             android:layout_weight="1"/>
         <Button
@@ -41,8 +42,7 @@
             android:fontFamily="@font/graphik_semibold"
             android:textColor="@color/colorFontDark"
             android:text="Cancel"
-            android:background="@drawable/roundedbutton"
-            android:backgroundTint="@color/colorFontWhite"
+            android:background="@drawable/cancel_border"
             android:textAllCaps="false"
             android:layout_weight="1"/>
 

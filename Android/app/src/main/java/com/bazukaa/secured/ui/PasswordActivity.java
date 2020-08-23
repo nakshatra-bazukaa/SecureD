@@ -53,9 +53,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PasswordActivity extends AppCompatActivity {
 
+    // Intent results constants
     public static final int ADD_PASSWORD_REQUEST = 1;
     public static final int PICK_IMAGE_REQUEST = 100;
 
+    // Shared preferences
     public static final String SHARED_PREFERENCE = "sharedPrefs";
     public static final String PATH = "path";
 
@@ -65,8 +67,8 @@ public class PasswordActivity extends AppCompatActivity {
     private Bitmap imgToStore = null;
     private CircleImageView dialogProfileImg;
     private String path;
-
     private Toolbar toolbar;
+
     @BindView(R.id.act_pwd_rv)
     RecyclerView passwordDetailsRecyclerView;
     @BindView(R.id.act_pwd_fab_add)
@@ -116,7 +118,8 @@ public class PasswordActivity extends AppCompatActivity {
 
             // To save the picked image
             okBtn.setOnClickListener(v1 -> {
-                Toast.makeText(this, "Pic saved, give a while for changes to reflect!", Toast.LENGTH_SHORT).show();
+                toolbarProfileImg.setImageBitmap(imgToStore);
+                Toast.makeText(this, "Pic saved", Toast.LENGTH_SHORT).show();
                 new ProfileDialogOkClickedAsyncTask().execute(imgToStore);
                 alertDialog.dismiss();
             });
@@ -238,6 +241,7 @@ public class PasswordActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    // To save profile img to internal storage
     private String saveToStorage(Bitmap bitmapImg){
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
         File directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE);
@@ -257,16 +261,22 @@ public class PasswordActivity extends AppCompatActivity {
         }
         return directory.getAbsolutePath();
     }
+
+    // To save data to shared preferences
     public void saveData(String path){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(PATH, path);
         editor.apply();
     }
+
+    // To load data from shared preferences
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         path = sharedPreferences.getString(PATH, null);
     }
+
+    // To load profile img to toolbar
     private void loadFromStorageForToolbarCiv(String path){
         try {
             toolbarProfileImg.setImageBitmap(BitmapFactory.decodeStream(new FileInputStream(new File(path, "profile.jpg"))));
@@ -275,9 +285,11 @@ public class PasswordActivity extends AppCompatActivity {
         }
     }
 
+    // Intent results
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        // To add a new password
         if(requestCode == ADD_PASSWORD_REQUEST && resultCode == RESULT_OK){
             String title = data.getStringExtra(MakePasswordActivity.EXTRA_TITLE);
             String desc = data.getStringExtra(MakePasswordActivity.EXTRA_DESC);
@@ -291,6 +303,7 @@ public class PasswordActivity extends AppCompatActivity {
         }else if(requestCode == ADD_PASSWORD_REQUEST){
             Toast.makeText(this, "Password Not Generated", Toast.LENGTH_SHORT).show();
         }
+        // To add a new profile image
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
             imgFilePath = data.getData();
             try {
@@ -303,17 +316,18 @@ public class PasswordActivity extends AppCompatActivity {
             Toast.makeText(this, "Image not picked", Toast.LENGTH_SHORT).show();
         }
     }
+    // Async task to save the profile image
     private class ProfileDialogOkClickedAsyncTask extends AsyncTask<Bitmap, Void, Void>{
         @Override
         protected Void doInBackground(Bitmap... bitmaps) {
             if(bitmaps[0] != null){
                 String newImgPath = saveToStorage(bitmaps[0]);
                 saveData(newImgPath);
-                loadFromStorageForToolbarCiv(newImgPath);
             }
             return null;
         }
     }
+    // Menu setup
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_password, menu);

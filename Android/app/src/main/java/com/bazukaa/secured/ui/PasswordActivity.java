@@ -15,15 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -68,6 +75,10 @@ public class PasswordActivity extends AppCompatActivity {
     private CircleImageView dialogProfileImg;
     private String path;
     private Toolbar toolbar;
+    private LinearLayout rotateBtnLl;
+
+    float rightDegrees = 90;
+    float leftDegrees = -90;
 
     @BindView(R.id.act_pwd_rv)
     RecyclerView passwordDetailsRecyclerView;
@@ -99,6 +110,9 @@ public class PasswordActivity extends AppCompatActivity {
 
             Button okBtn = view.findViewById(R.id.dialog_profile_btn_ok);
             Button cancelBtn = view.findViewById(R.id.dialog_profile_btn_cancel);
+            Button rotateLeft = view.findViewById(R.id.dialog_profile_btn_rotate_left);
+            Button rotateRight = view.findViewById(R.id.dialog_profile_btn_rotate_right);
+            rotateBtnLl = view.findViewById(R.id.dialog_profile_ll_btn_rotate);
             LinearLayout tapToEdit = view.findViewById(R.id.dialog_profile_ll_tap_to_edit);
             dialogProfileImg = view.findViewById(R.id.dialog_profile_pic_civ_profile);
             try {
@@ -114,6 +128,20 @@ public class PasswordActivity extends AppCompatActivity {
                 imgIntent.setType("image/*");
                 imgIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(imgIntent, PICK_IMAGE_REQUEST);
+            });
+            // To rotate the present bitmap in left
+            rotateLeft.setOnClickListener(v14 -> {
+                Matrix matrix = new Matrix();
+                matrix.setRotate(leftDegrees);
+                imgToStore = Bitmap.createBitmap(imgToStore, 0, 0, imgToStore.getWidth(), imgToStore.getHeight(), matrix, true);
+                dialogProfileImg.setImageBitmap(imgToStore);
+            });
+            // To rotate the present bitmap in right
+            rotateRight.setOnClickListener(v15 -> {
+                Matrix matrix = new Matrix();
+                matrix.setRotate(rightDegrees);
+                imgToStore = Bitmap.createBitmap(imgToStore, 0, 0, imgToStore.getWidth(), imgToStore.getHeight(), matrix, true);
+                dialogProfileImg.setImageBitmap(imgToStore);
             });
 
             // To save the picked image
@@ -309,6 +337,7 @@ public class PasswordActivity extends AppCompatActivity {
             try {
                 imgToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imgFilePath);
                 dialogProfileImg.setImageBitmap(imgToStore);
+                rotateBtnLl.setVisibility(View.VISIBLE);
             } catch (IOException e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }

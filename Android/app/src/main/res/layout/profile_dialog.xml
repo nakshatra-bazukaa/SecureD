@@ -18,6 +18,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/dialog_profile_ll_btn_rotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_profile_pic">
+        <Button
+            android:id="@+id/dialog_profile_btn_rotate_left"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_rotate_left_black_24dp"
+            />
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="0dp"
+            />
+        <Button
+            android:id="@+id/dialog_profile_btn_rotate_right"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_rotate_right_black_24dp"
+            />
+    </LinearLayout>
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/dialog_profile_pic_civ_profile"
         android:layout_width="match_parent"
@@ -28,7 +55,7 @@
         app:civ_border_color="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_profile_pic"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_profile_ll_btn_rotate"
         app:layout_constraintBottom_toTopOf="@+id/dialog_profile_ll_btn"/>
     <LinearLayout
         android:id="@+id/dialog_profile_ll_tap_to_edit"

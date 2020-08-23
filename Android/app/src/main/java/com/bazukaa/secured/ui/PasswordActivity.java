@@ -22,6 +22,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -71,7 +72,7 @@ public class PasswordActivity extends AppCompatActivity {
     @BindView(R.id.act_pwd_fab_add)
     FloatingActionButton addButton;
     @BindView(R.id.act_pwd_toolbar_civ_profile_image)
-    CircleImageView civ;
+    CircleImageView toolbarProfileImg;
 
 
     @Override
@@ -82,29 +83,26 @@ public class PasswordActivity extends AppCompatActivity {
 
         loadData();
         loadFromStorageForToolbarCiv(path);
+
         // Setting up toolbar
         toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // Profile dialog
-        civ.setOnClickListener(v -> {
-            final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this, R.style.AlertDialogTheme);
-            View view = LayoutInflater.from(PasswordActivity.this).inflate(R.layout.profile_dialog, findViewById(R.id.profile_dialog_container));
+        toolbarProfileImg.setOnClickListener(v -> {
+            final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
+            View view = getLayoutInflater().inflate(R.layout.profile_dialog, null);
+            alert.setView(view);
+
             Button okBtn = view.findViewById(R.id.dialog_profile_btn_ok);
             Button cancelBtn = view.findViewById(R.id.dialog_profile_btn_cancel);
-            dialogProfileImg = view.findViewById(R.id.dialog_profile_pic_civ_profile);
             LinearLayout tapToEdit = view.findViewById(R.id.dialog_profile_ll_tap_to_edit);
-
+            dialogProfileImg = view.findViewById(R.id.dialog_profile_pic_civ_profile);
             try {
-                File f = new File(path, "profile.jpg");
-                Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
-                dialogProfileImg.setImageBitmap(b);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+                dialogProfileImg.setImageBitmap(BitmapFactory.decodeStream(new FileInputStream(new File(path, "profile.jpg"))));
+            } catch (FileNotFoundException e) { e.printStackTrace(); }
 
-            alert.setView(view);
             final AlertDialog alertDialog = alert.create();
             alertDialog.setCanceledOnTouchOutside(false);
 
@@ -118,11 +116,8 @@ public class PasswordActivity extends AppCompatActivity {
 
             // To save the picked image
             okBtn.setOnClickListener(v1 -> {
-                if(imgToStore != null){
-                    String path = saveToStorage(imgToStore);
-                    saveData(path);
-                    loadFromStorageForToolbarCiv(path);
-                }
+                Toast.makeText(this, "Pic saved, give a while for changes to reflect!", Toast.LENGTH_SHORT).show();
+                new ProfileDialogOkClickedAsyncTask().execute(imgToStore);
                 alertDialog.dismiss();
             });
 
@@ -262,26 +257,23 @@ public class PasswordActivity extends AppCompatActivity {
         }
         return directory.getAbsolutePath();
     }
-    private void loadFromStorageForToolbarCiv(String path){
-        try {
-            File f = new File(path, "profile.jpg");
-            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
-            civ.setImageBitmap(b);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
     public void saveData(String path){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(PATH, path);
         editor.apply();
-        Toast.makeText(this, "Pic Saved", Toast.LENGTH_SHORT).show();
     }
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         path = sharedPreferences.getString(PATH, null);
-     }
+    }
+    private void loadFromStorageForToolbarCiv(String path){
+        try {
+            toolbarProfileImg.setImageBitmap(BitmapFactory.decodeStream(new FileInputStream(new File(path, "profile.jpg"))));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -301,13 +293,25 @@ public class PasswordActivity extends AppCompatActivity {
         }
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
             imgFilePath = data.getData();
-
             try {
                 imgToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imgFilePath);
                 dialogProfileImg.setImageBitmap(imgToStore);
             } catch (IOException e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        }else if(requestCode == PICK_IMAGE_REQUEST){
+            Toast.makeText(this, "Image not picked", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private class ProfileDialogOkClickedAsyncTask extends AsyncTask<Bitmap, Void, Void>{
+        @Override
+        protected Void doInBackground(Bitmap... bitmaps) {
+            if(bitmaps[0] != null){
+                String newImgPath = saveToStorage(bitmaps[0]);
+                saveData(newImgPath);
+                loadFromStorageForToolbarCiv(newImgPath);
+            }
+            return null;
         }
     }
     @Override

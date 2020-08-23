@@ -5,12 +5,12 @@
             <item android:right="2dp" android:top="2dp">
                 <shape android:shape="rectangle">
                     <corners android:radius="5dp" />
-                    <solid android:color="#000000" />
+                    <solid android:color="@color/colorBlack" />
                 </shape>
             </item>
             <item android:bottom="2dp" android:left="2dp">
                 <shape>
-                    <solid android:color="#074576"/>
+                    <solid android:color="@color/colorAccent"/>
 
                     <corners android:radius="4dp" />
                     <padding android:bottom="10dp" android:left="10dp"

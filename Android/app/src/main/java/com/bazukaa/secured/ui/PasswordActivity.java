@@ -70,7 +70,7 @@ public class PasswordActivity extends AppCompatActivity {
     RecyclerView passwordDetailsRecyclerView;
     @BindView(R.id.act_pwd_fab_add)
     FloatingActionButton addButton;
-    @BindView(R.id.profile_image)
+    @BindView(R.id.act_pwd_toolbar_civ_profile_image)
     CircleImageView civ;
 
 

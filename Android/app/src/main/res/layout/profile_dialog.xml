@@ -68,9 +68,9 @@
         app:layout_constraintBottom_toBottomOf="parent">
         <Button
             android:id="@+id/dialog_profile_btn_ok"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_done_24px"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/sel_"
             />
         <Space
             android:layout_width="16dp"
@@ -78,9 +78,9 @@
             />
         <Button
             android:id="@+id/dialog_profile_btn_cancel"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_clear_24px"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/can_"
             />
     </LinearLayout>
 

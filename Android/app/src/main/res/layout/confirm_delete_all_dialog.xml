@@ -37,7 +37,7 @@
             android:textSize="18sp"
             android:fontFamily="@font/graphik_semibold"
             android:textColor="@color/colorFontWhite"
-            android:background="@drawable/roundedbutton"
+            android:background="@drawable/delete_button"
             android:textAllCaps="false"
             android:layout_weight="1"/>
         <Button
@@ -45,12 +45,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
-            android:background="@drawable/roundedbutton"
+            android:background="@drawable/cancel_border"
             android:text="Cancel"
             android:textSize="18sp"
             android:fontFamily="@font/graphik_semibold"
             android:textColor="@color/colorFontDark"
-            android:backgroundTint="@color/colorFontWhite"
             android:textAllCaps="false"
             android:layout_weight="1"/>
 

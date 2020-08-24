@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle" >
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/colorPrimary" >
+    <item android:drawable="@drawable/can_b">
 
-    <solid android:color="@color/colorWhite" />
+    </item>
 
-    <stroke
-        android:width="3dp"
-        android:color="@color/colorAccent" />
-</shape>
+</ripple>

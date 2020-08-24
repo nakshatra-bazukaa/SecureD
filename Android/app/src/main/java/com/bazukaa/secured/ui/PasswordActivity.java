@@ -64,10 +64,15 @@ public class PasswordActivity extends AppCompatActivity {
     public static final int ADD_PASSWORD_REQUEST = 1;
     public static final int PICK_IMAGE_REQUEST = 100;
 
+    // To rotate the image from gallery
+    public static final float leftDegrees = -90;
+    public static final float rightDegrees = 90;
+
     // Shared preferences
     public static final String SHARED_PREFERENCE = "sharedPrefs";
     public static final String PATH = "path";
 
+    // Viewmodel
     private PasswordDetailsViewModel passwordDetailsViewModel;
 
     private Uri imgFilePath;
@@ -76,9 +81,6 @@ public class PasswordActivity extends AppCompatActivity {
     private String path;
     private Toolbar toolbar;
     private LinearLayout rotateBtnLl;
-
-    float rightDegrees = 90;
-    float leftDegrees = -90;
 
     @BindView(R.id.act_pwd_rv)
     RecyclerView passwordDetailsRecyclerView;
@@ -213,6 +215,8 @@ public class PasswordActivity extends AppCompatActivity {
     public void onFabClicked(){
         Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
         startActivityForResult(intent, ADD_PASSWORD_REQUEST);
+        overridePendingTransition(R.anim.slide_up_in, R.anim.slide_up_out);
+
     }
 
     // Function to setup and open settings dialog
@@ -243,6 +247,7 @@ public class PasswordActivity extends AppCompatActivity {
 
             deleteButton.setOnClickListener(v12 -> {
                 passwordDetailsViewModel.deleteAllPasswords();
+                Toast.makeText(this, "All Passwords deleted successfully", Toast.LENGTH_SHORT).show();
                 alertDialog1.dismiss();
             });
 

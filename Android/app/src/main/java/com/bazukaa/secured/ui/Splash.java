@@ -19,6 +19,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent splashIntent = new Intent(Splash.this, PasswordActivity.class);
             startActivity(splashIntent);
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             finish();
         }, SPLASH_TIME_OUT);
     }

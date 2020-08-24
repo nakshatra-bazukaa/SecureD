@@ -116,4 +116,10 @@ public class MakePasswordActivity extends AppCompatActivity {
     public void onGeneratePwdButtonClicked(){
         savePassword();
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_down_out, R.anim.slide_down_in);
+    }
 }

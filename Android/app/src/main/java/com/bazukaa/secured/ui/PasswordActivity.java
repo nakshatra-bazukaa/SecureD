@@ -146,9 +146,11 @@ public class PasswordActivity extends AppCompatActivity {
 
             // To save the picked image
             okBtn.setOnClickListener(v1 -> {
-                toolbarProfileImg.setImageBitmap(imgToStore);
-                Toast.makeText(this, "Pic saved", Toast.LENGTH_SHORT).show();
-                new ProfileDialogOkClickedAsyncTask().execute(imgToStore);
+                if(rotateBtnLl.getVisibility() == View.VISIBLE){
+                    toolbarProfileImg.setImageBitmap(imgToStore);
+                    Toast.makeText(this, "Pic saved", Toast.LENGTH_SHORT).show();
+                    new ProfileDialogOkClickedAsyncTask().execute(imgToStore);
+                }
                 alertDialog.dismiss();
             });
 

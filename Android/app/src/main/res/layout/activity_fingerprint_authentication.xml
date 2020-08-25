@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.FingerprintAuthenticationActivity">
+
+
+    <TextView
+        android:id="@+id/act_finger_print_auth_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:text="Fingerprint Authentication"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/act_finger_print_auth_img_finger"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_below="@+id/act_finger_print_auth_tv_title"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@mipmap/fingerprint" />
+
+    <TextView
+        android:id="@+id/act_finger_print_auth_tv_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/act_finger_print_auth_img_finger"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:text="Place your Finger on the Scanner to Proceed"
+        android:textAlignment="center" />
+</RelativeLayout>

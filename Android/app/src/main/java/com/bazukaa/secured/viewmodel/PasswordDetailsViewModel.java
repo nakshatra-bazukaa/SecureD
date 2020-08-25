@@ -16,7 +16,7 @@ public class PasswordDetailsViewModel extends AndroidViewModel implements Passwo
     private PasswordDetailsRepository passwordDetailsRepository;
     private LiveData<List<PasswordDetails>> passwordDetailsList;
 
-    public PasswordDetailsViewModel(@NonNull Application application){
+    public PasswordDetailsViewModel(@NonNull Application application) {
         super(application);
 
         passwordDetailsRepository = new PasswordDetailsRepository(application);
@@ -24,14 +24,27 @@ public class PasswordDetailsViewModel extends AndroidViewModel implements Passwo
     }
 
     @Override
-    public void insert(PasswordDetails passwordDetails) { passwordDetailsRepository.insert(passwordDetails); }
+    public void insert(PasswordDetails passwordDetails) {
+        passwordDetailsRepository.insert(passwordDetails);
+    }
 
     @Override
-    public void update(PasswordDetails passwordDetails) { passwordDetailsRepository.update(passwordDetails); }
+    public void update(PasswordDetails passwordDetails) {
+        passwordDetailsRepository.update(passwordDetails);
+    }
 
     @Override
-    public void delete(PasswordDetails passwordDetails) { passwordDetailsRepository.delete(passwordDetails); }
+    public void delete(PasswordDetails passwordDetails) {
+        passwordDetailsRepository.delete(passwordDetails);
+    }
 
     @Override
-    public LiveData<List<PasswordDetails>> getPasswordDetailsList() { return passwordDetailsList; }
+    public void deleteAllPasswords() {
+        passwordDetailsRepository.deleteAllPasswords();
+    }
+
+    @Override
+    public LiveData<List<PasswordDetails>> getPasswordDetailsList() {
+        return passwordDetailsList;
+    }
 }

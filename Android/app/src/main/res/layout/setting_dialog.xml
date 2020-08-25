@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/stt_2"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button
+        android:id="@+id/dialog_setting_btn_dismiss"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/cancel_vec"
+        android:backgroundTint="@color/colorPrimaryDark"/>
+    <TextView
+        android:id="@+id/dialog_setting_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:alpha="100"
+        android:fontFamily="@font/graphik_semibold"
+        android:textColor="@color/colorFontDark"
+        android:text="Settings"
+        android:background="@drawable/settings_und"
+        android:paddingBottom="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_setting_btn_dismiss"/>
+
+    <LinearLayout
+        android:id="@+id/dialog_setting_ll_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_setting_tv_title">
+        <TextView
+            android:id="@+id/dialog_setting_tv_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="22dp"
+            android:paddingBottom="15dp"
+            android:layout_weight="1"
+            android:text="Switch to Dark Mode"
+            android:textSize="18sp"
+            android:fontFamily="@font/graphik_regular"
+            android:textColor="@color/colorFontDark"/>
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/dialog_setting_switch_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="1dp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/dialog_setting_btn_delete_all"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginHorizontal="10dp"
+        android:paddingBottom="10dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/ripple_blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/graphik_regular"
+        android:textColor="@color/colorFontWhite"
+        android:text="  Delete All Passwords  "
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_setting_ll_switch"
+        />
+    <Button
+        android:id="@+id/dialog_setting_btn_add_finger_unlock"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginHorizontal="10dp"
+        android:paddingBottom="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="Add Fingerprint Unlock"
+        android:textSize="18sp"
+        android:fontFamily="@font/graphik_regular"
+        android:textColor="@color/colorFontDark"
+        android:background="@drawable/ripple_white"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_setting_btn_delete_all"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/dialog_setting_btn_see_source_code"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginHorizontal="10dp"
+        android:paddingBottom="10dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/ripple_white"
+        android:textSize="18sp"
+        android:fontFamily="@font/graphik_regular"
+        android:textColor="@color/colorFontDark"
+        android:text="     See Source Code     "
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_setting_btn_add_finger_unlock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <Button
+        android:id="@+id/dialog_setting_btn_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginHorizontal="10dp"
+        android:paddingBottom="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="     Give Us Feedback    "
+        android:textSize="18sp"
+        android:fontFamily="@font/graphik_regular"
+        android:textColor="@color/colorFontDark"
+        android:background="@drawable/ripple_white"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_setting_btn_see_source_code"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

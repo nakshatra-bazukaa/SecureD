@@ -14,6 +14,8 @@ public interface PasswordDetailsViewModelHelper {
 
     void delete(PasswordDetails passwordDetails);
 
+    void deleteAllPasswords();
+
     LiveData<List<PasswordDetails>> getPasswordDetailsList();
 
 }

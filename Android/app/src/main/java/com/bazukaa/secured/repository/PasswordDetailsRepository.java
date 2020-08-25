@@ -24,5 +24,6 @@ public class PasswordDetailsRepository {
     public void insert(PasswordDetails passwordDetails) { new PasswordDetailsAsyncTask(passwordDetailsDao, PasswordDetailsAsyncTask.INSERT_PASSWORD_DETAILS_REQUEST).execute(passwordDetails); }
     public void update(PasswordDetails passwordDetails) { new PasswordDetailsAsyncTask(passwordDetailsDao, PasswordDetailsAsyncTask.UPDATE_PASSWORD_DETAILS_REQUEST).execute(passwordDetails); }
     public void delete(PasswordDetails passwordDetails) { new PasswordDetailsAsyncTask(passwordDetailsDao, PasswordDetailsAsyncTask.DELETE_PASSWORD_DETAILS_REQUEST).execute(passwordDetails); }
+    public void deleteAllPasswords() { new PasswordDetailsAsyncTask(passwordDetailsDao, PasswordDetailsAsyncTask.DELETE_ALL_PASSWORD_DETAILS_REQUEST).execute(); }
     public LiveData<List<PasswordDetails>> getPasswordDetailsList() { return passwordDetailsList; }
 }

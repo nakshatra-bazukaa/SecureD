@@ -9,6 +9,7 @@ public class PasswordDetailsAsyncTask extends AsyncTask<PasswordDetails, Void, V
     public static final int INSERT_PASSWORD_DETAILS_REQUEST = 1;
     public static final int UPDATE_PASSWORD_DETAILS_REQUEST = 2;
     public static final int DELETE_PASSWORD_DETAILS_REQUEST = 3;
+    public static final int DELETE_ALL_PASSWORD_DETAILS_REQUEST = 4;
 
     private PasswordDetailsDao passwordDetailsDao;
     private int request;
@@ -27,6 +28,8 @@ public class PasswordDetailsAsyncTask extends AsyncTask<PasswordDetails, Void, V
             passwordDetailsDao.update(passwordDetails[0]);
         else if(request == DELETE_PASSWORD_DETAILS_REQUEST)
             passwordDetailsDao.delete(passwordDetails[0]);
+        else if(request == DELETE_ALL_PASSWORD_DETAILS_REQUEST)
+            passwordDetailsDao.deleteAllPasswords();
         return null;
     }
 }

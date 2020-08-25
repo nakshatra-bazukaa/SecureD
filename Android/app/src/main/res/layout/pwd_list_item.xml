@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/card_pwd_cv_pwdCard"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     app:cardCornerRadius="8dp"
     android:elevation="4dp"
     android:layout_marginTop="8dp"
@@ -14,19 +15,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:background="@color/colorPrimary"
+        android:padding="16dp"
+        >
 
         <TextView
             android:id="@+id/card_pwd_tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorFontDark"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"/>
+            android:fontFamily="@font/graphik_medium"
+            android:textSize="@dimen/pwdCardTitle"/>
         <LinearLayout
             android:id="@+id/card_pwd_ll"
             android:layout_width="wrap_content"
@@ -44,9 +47,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4:40 PM 18/07/20"
-                    android:textColor="@color/colorAccent"
-                    android:fontFamily="sans-serif"
-                    android:textSize="13sp"
+                    android:textColor="@color/colorFontDark"
+                    android:fontFamily="@font/graphik_regular"
+                    android:textSize="@dimen/pwdCardDate"
                     android:alpha="0.5"
                     android:layout_marginTop="6dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -71,43 +74,54 @@
             android:visibility="gone"
             android:gravity="center"
             android:id="@+id/expandable_layout"
-            android:layout_margin="8dp">
+            >
             <TextView
                 android:id="@+id/card_pwd_ev_tv_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorFontDark"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:fontFamily="sans-serif"
-                android:textSize="15sp"
+                android:fontFamily="@font/graphik_regular"
+                android:textSize="@dimen/pwdCardDesc"
                 android:layout_marginTop="6dp"/>
             <TextView
                 android:id="@+id/card_pwd_ev_tv_pwd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingBottom="7dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/colorFontWhite"
                 android:text="Tap to copy password"
                 android:gravity="center"
+                android:elevation="4dp"
+                android:background="@drawable/ripple_effect"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/card_pwd_ev_tv_desc"
-                android:fontFamily="sans-serif"
-                android:textSize="13sp"
-                android:layout_marginTop="6dp"
+                android:fontFamily="@font/graphik_regular"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
                 />
             <Button
                 android:id="@+id/card_pwd_ev_btn_pwd_dlt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingBottom="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/colorFontDark"
+                android:textAllCaps="false"
+                android:elevation="4dp"
+                android:background="@drawable/ripple_white"
                 android:text="Delete Password"
                 android:gravity="center"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/card_pwd_ev_tv_pwd"
-                android:fontFamily="sans-serif"
-                android:textSize="13sp"
-                android:layout_marginTop="6dp"/>
+                android:fontFamily="@font/graphik_regular"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
         </RelativeLayout>
 
     </RelativeLayout>

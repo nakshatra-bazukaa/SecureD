@@ -1,7 +1,3 @@
-# Project Title
-password generator (An android application to generate password)
-# App Name
-SecureD
 # App Architecture 
 MVVM
 # Required Libraries
@@ -23,7 +19,7 @@ MVVM
 
 
 
-|||
+|.java|.xml|
 |--|--|
 |MainActivity|activity_main|
 |HomeFragment|fragment_home|

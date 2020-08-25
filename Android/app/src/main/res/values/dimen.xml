@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbarText">18sp</dimen>
+    <dimen name="pwdCardTitle">16sp</dimen>
+    <dimen name="pwdCardDesc">15sp</dimen>
+    <dimen name="pwdCardDate">13sp</dimen>
+</resources>

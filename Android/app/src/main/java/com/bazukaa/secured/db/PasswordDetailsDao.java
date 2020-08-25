@@ -23,6 +23,9 @@ public interface PasswordDetailsDao {
     @Update
     void update(PasswordDetails passwordDetails);
 
+    @Query("DELETE FROM pwd_details_table")
+    void deleteAllPasswords();
+
     @Query("SELECT * FROM pwd_details_table ORDER BY id DESC")
     LiveData<List<PasswordDetails>> getPasswordDetailsList();
 }

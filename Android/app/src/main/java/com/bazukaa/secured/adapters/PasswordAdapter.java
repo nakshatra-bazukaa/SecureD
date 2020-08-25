@@ -84,13 +84,10 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
             pwdCard = itemView.findViewById(R.id.card_pwd_cv_pwdCard);
             expandableView = itemView.findViewById(R.id.expandable_layout);
             // Delete button setup
-            deleteBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (listener != null && position != RecyclerView.NO_POSITION){
-                        listener.onDeleteButtonClick(position);
-                    }
+            deleteBtn.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION){
+                    listener.onDeleteButtonClick(position);
                 }
             });
             // Tap to copy to clipboard setup
@@ -99,8 +96,18 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if (listener != null && position != RecyclerView.NO_POSITION){
-                        listener.onPwdTvClicked(position);
+                        listener.onPwdTvClick(position);
                     }
+                }
+            });
+            pwdTv.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION){
+                        listener.onPwdTvLongClick(position);
+                    }
+                    return false;
                 }
             });
         }
@@ -113,7 +120,8 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
     // Interface to set up click listener
     public interface OnItemClickListener{
         void onDeleteButtonClick(int position);
-        void onPwdTvClicked(int position);
+        void onPwdTvClick(int position);
+        void onPwdTvLongClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){

@@ -39,6 +39,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bazukaa.secured.R;
@@ -201,12 +202,20 @@ public class PasswordActivity extends AppCompatActivity {
 
             // To copy pwd to clip board
             @Override
-            public void onPwdTvClicked(int position) {
+            public void onPwdTvClick(int position) {
                 PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
                 ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("Password copied to clipboard", passwordDetails.getPassword());
                 clipboardManager.setPrimaryClip(clip);
                 Toast.makeText(PasswordActivity.this, "Password copied to clipboard", Toast.LENGTH_SHORT).show();
+            }
+
+            // Long press to reveal password
+            @Override
+            public void onPwdTvLongClick(int position) {
+                PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
+                TextView pwdTv = findViewById(R.id.card_pwd_ev_tv_pwd);
+                pwdTv.setText(passwordDetails.getPassword());
             }
         });
     }
@@ -216,7 +225,6 @@ public class PasswordActivity extends AppCompatActivity {
         Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
         startActivityForResult(intent, ADD_PASSWORD_REQUEST);
         overridePendingTransition(R.anim.overlay_in, R.anim.still);
-
     }
 
     // Function to setup and open settings dialog

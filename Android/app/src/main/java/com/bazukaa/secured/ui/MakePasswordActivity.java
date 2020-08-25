@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bazukaa.secured.R;
 import com.bazukaa.secured.util.PasswordGenerator;
@@ -26,6 +27,8 @@ public class MakePasswordActivity extends AppCompatActivity {
     public static final String EXTRA_TIMESTAMP = "com.bazukaa.secured.ui.EXTRA_TIMESTAMP";
 
     public static final int DEFAULT_PWD_LENGTH = 24;
+
+    public static final int MIN_PASSWORD_LENGTH = 8;
 
     @BindView((R.id.act_mk_pwd_et_title))
     EditText titleEditText;
@@ -60,7 +63,10 @@ public class MakePasswordActivity extends AppCompatActivity {
         lengthSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                lengthTextView.setText("" + progress);
+                if(progress <= MIN_PASSWORD_LENGTH)
+                    lengthTextView.setText("" + MIN_PASSWORD_LENGTH);
+                else
+                    lengthTextView.setText("" + progress);
             }
 
             @Override
@@ -114,12 +120,15 @@ public class MakePasswordActivity extends AppCompatActivity {
 
     @OnClick(R.id.act_mk_pwd_btn_gen_pwd)
     public void onGeneratePwdButtonClicked(){
-        savePassword();
+        if(blockLetterSwitch.isChecked() == false &&smallLetterSwitch.isChecked() == false && numSwitch.isChecked() == false && splCharSwitch.isChecked() == false)
+            Toast.makeText(this, "Please select a domain for your password", Toast.LENGTH_SHORT).show();
+        else
+            savePassword();
     }
 
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.slide_down_out, R.anim.slide_down_in);
+        overridePendingTransition(R.anim.still, R.anim.overlay_out);
     }
 }

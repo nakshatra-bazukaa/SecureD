@@ -215,7 +215,7 @@ public class PasswordActivity extends AppCompatActivity {
     public void onFabClicked(){
         Intent intent = new Intent(PasswordActivity.this, MakePasswordActivity.class);
         startActivityForResult(intent, ADD_PASSWORD_REQUEST);
-        overridePendingTransition(R.anim.slide_up_in, R.anim.slide_up_out);
+        overridePendingTransition(R.anim.overlay_in, R.anim.still);
 
     }
 

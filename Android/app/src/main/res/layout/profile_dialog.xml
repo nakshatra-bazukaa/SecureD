@@ -3,7 +3,6 @@
     android:id="@+id/profile_dialog_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/border"
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
@@ -11,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         android:text="Edit your avatar"
         android:textSize="21sp"
         android:fontFamily="@font/graphik_semibold"
@@ -22,6 +22,7 @@
         android:id="@+id/dialog_profile_ll_btn_rotate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:visibility="gone"
@@ -95,9 +96,15 @@
         app:layout_constraintBottom_toBottomOf="parent">
         <Button
             android:id="@+id/dialog_profile_btn_ok"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@drawable/sel_"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:text="Save"
+            android:textColor="@color/colorFontWhite"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:background="@drawable/ripple_blue"
             />
         <Space
             android:layout_width="16dp"
@@ -105,9 +112,15 @@
             />
         <Button
             android:id="@+id/dialog_profile_btn_cancel"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@drawable/can_"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:text="Cancel"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorFontDark"
+            android:textAllCaps="false"
+            android:background="@drawable/cancel_border"
             />
     </LinearLayout>
 

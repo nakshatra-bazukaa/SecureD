@@ -121,7 +121,7 @@
                 android:layout_below="@+id/card_pwd_ev_tv_pwd"
                 android:fontFamily="@font/graphik_regular"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="2dp"/>
         </RelativeLayout>
 
     </RelativeLayout>

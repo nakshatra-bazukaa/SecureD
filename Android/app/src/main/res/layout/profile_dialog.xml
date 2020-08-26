@@ -25,7 +25,7 @@
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="gon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dialog_profile_pic">
@@ -97,13 +97,14 @@
         <Button
             android:id="@+id/dialog_profile_btn_ok"
             android:layout_width="150dp"
-            android:layout_height="80dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="3dp"
             android:text="Save"
             android:textColor="@color/colorFontWhite"
             android:textAllCaps="false"
             android:textSize="18sp"
             android:gravity="center"
-            android:paddingBottom="5dp"
+            android:paddingBottom="6dp"
             android:background="@drawable/ripple_blue"
             />
         <Space
@@ -113,14 +114,14 @@
         <Button
             android:id="@+id/dialog_profile_btn_cancel"
             android:layout_width="150dp"
-            android:layout_height="80dp"
+            android:layout_height="48dp"
             android:text="Cancel"
             android:gravity="center"
             android:textSize="18sp"
-            android:paddingBottom="5dp"
+            android:paddingBottom="0dp"
             android:textColor="@color/colorFontDark"
             android:textAllCaps="false"
-            android:background="@drawable/cancel_border"
+            android:background="@drawable/ripple_c"
             />
     </LinearLayout>
 

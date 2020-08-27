@@ -12,5 +12,14 @@
     <color name="colorFontWhite">#FFFFFF</color>
     <color name="colorFontDark">#FFFFFF</color>
 
+    <color name="toolbarColor">#434343</color>
+    <color name="toolbarMenuItemColor">#ffffff</color>
+
+    <color name="cardBgColor">#414141</color>
+    <color name="rvBgColor">#252525</color>
+
+    <color name="fabColor">#ffffff</color>
+    <color name="fabInsideColor">#252525</color>
+
 
 </resources>

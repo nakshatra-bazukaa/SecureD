@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/pro_b"
+        />
+    <item android:drawable="@drawable/ic_rotate_right_black_24dp"
+        android:top="100dp"
+        android:right="60dp"/>
+</layer-list>

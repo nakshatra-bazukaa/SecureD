@@ -3,6 +3,7 @@
     android:id="@+id/profile_dialog_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/stt_2"
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
@@ -20,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
         android:id="@+id/dialog_profile_ll_btn_rotate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
 
@@ -34,13 +35,15 @@
             android:id="@+id/dialog_profile_btn_rotate_left"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/rl"
+            android:paddingLeft="20dp"
+            android:background="@drawable/rol"
             />
         <Button
             android:id="@+id/dialog_profile_btn_rotate_right"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/rr"
+            android:paddingRight="20dp"
+            android:background="@drawable/ror"
             />
     </LinearLayout>
     <de.hdodenhof.circleimageview.CircleImageView

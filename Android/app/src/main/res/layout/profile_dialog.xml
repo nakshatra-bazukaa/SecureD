@@ -61,10 +61,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_profile_pic"
-        app:layout_constraintBottom_toTopOf="@+id/dialog_profile_ll_btn">
+        app:layout_constraintStart_toStartOf="@id/dialog_profile_pic_civ_profile"
+        app:layout_constraintEnd_toEndOf="@id/dialog_profile_pic_civ_profile"
+        app:layout_constraintTop_toTopOf="@+id/dialog_profile_pic_civ_profile"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_profile_pic_civ_profile">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/dialog_profile_vector_edit"
             android:layout_width="35dp"

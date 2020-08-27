@@ -107,10 +107,7 @@
             android:paddingBottom="6dp"
             android:background="@drawable/ripple_blue"
             />
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="0dp"
-            />
+
         <Button
             android:id="@+id/dialog_profile_btn_cancel"
             android:layout_width="150dp"

@@ -103,7 +103,6 @@ public class PasswordActivity extends AppCompatActivity {
     @BindView(R.id.act_pwd_toolbar_civ_profile_image)
     CircleImageView toolbarProfileImg;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +116,6 @@ public class PasswordActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         // Profile dialog
         toolbarProfileImg.setOnClickListener(v -> {
             final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
@@ -175,7 +173,6 @@ public class PasswordActivity extends AppCompatActivity {
 
             alertDialog.show();
         });
-
         // Setting up recyclerview
         final PasswordAdapter adapter = new PasswordAdapter();
         passwordDetailsRecyclerView.setAdapter(adapter);
@@ -186,7 +183,6 @@ public class PasswordActivity extends AppCompatActivity {
                 adapter.setPasswords(passwordDetails);
             }
         });
-
         // To handle clicks on recycler view
         adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
             // To delete a password
@@ -240,7 +236,6 @@ public class PasswordActivity extends AppCompatActivity {
         startActivityForResult(intent, ADD_PASSWORD_REQUEST);
         overridePendingTransition(R.anim.overlay_in, R.anim.still);
     }
-
     // Function to setup and open settings dialog
     public void openSettings(){
         final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
@@ -252,17 +247,18 @@ public class PasswordActivity extends AppCompatActivity {
         Button giveFeedbackBtn = view.findViewById(R.id.dialog_setting_btn_feedback);
         SwitchMaterial switchDarkMode = view.findViewById(R.id.dialog_setting_switch_mode);
         alert.setView(view);
+
         if(appMode == DARK_MODE){
             switchDarkMode.setChecked(true);
         }else{
             switchDarkMode.setChecked(false);
         }
+
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
         // Dismiss button click
         dismissBtn.setOnClickListener(v -> alertDialog.dismiss());
-
         // Delete all passwords button click
         dltAllPwdBtn.setOnClickListener(v -> {
             final AlertDialog.Builder alert1 = new AlertDialog.Builder(PasswordActivity.this);
@@ -312,7 +308,6 @@ public class PasswordActivity extends AppCompatActivity {
             }
         });
     }
-
     // To save profile img to internal storage
     private String saveProfileImgToStorage(Bitmap bitmapImg){
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
@@ -333,7 +328,6 @@ public class PasswordActivity extends AppCompatActivity {
         }
         return directory.getAbsolutePath();
     }
-
     // To save profile picture to shared preferences
     public void saveProfileImgData(String path){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
@@ -362,7 +356,6 @@ public class PasswordActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     // Intent results
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

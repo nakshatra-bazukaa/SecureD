@@ -71,17 +71,28 @@ public class PasswordActivity extends AppCompatActivity {
     public static final float leftDegrees = -90;
     public static final float rightDegrees = 90;
 
+    // To set app mode
+    public static final boolean DARK_MODE = true;
+    public static final boolean LIGHT_MODE = false;
+
     // Shared preferences
     public static final String SHARED_PREFERENCE = "sharedPrefs";
     public static final String PATH = "path";
+    public static final String APP_MODE = "app mode dark/light";
 
     // Viewmodel
     private PasswordDetailsViewModel passwordDetailsViewModel;
 
+    // Variables for profile image
     private Uri imgFilePath;
     private Bitmap imgToStore = null;
     private CircleImageView dialogProfileImg;
+
+    // Variables for Shared Preferences
     private String path;
+    private Boolean appMode;
+
+    // Variables for different views
     private Toolbar toolbar;
     private LinearLayout rotateBtnLl;
 
@@ -176,6 +187,7 @@ public class PasswordActivity extends AppCompatActivity {
             }
         });
 
+        // To handle clicks on recycler view
         adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
             // To delete a password
             @Override
@@ -240,6 +252,11 @@ public class PasswordActivity extends AppCompatActivity {
         Button giveFeedbackBtn = view.findViewById(R.id.dialog_setting_btn_feedback);
         SwitchMaterial switchDarkMode = view.findViewById(R.id.dialog_setting_switch_mode);
         alert.setView(view);
+        if(appMode == DARK_MODE){
+            switchDarkMode.setChecked(true);
+        }else{
+            switchDarkMode.setChecked(false);
+        }
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
@@ -288,16 +305,16 @@ public class PasswordActivity extends AppCompatActivity {
         switchDarkMode.setOnClickListener(v -> {
             if(switchDarkMode.isChecked() == true){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                saveAppModeData(DARK_MODE);
             }else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                saveAppModeData(LIGHT_MODE);
             }
-            startActivity(new Intent(getApplicationContext(), PasswordActivity.class));
-            finish();
         });
     }
 
     // To save profile img to internal storage
-    private String saveToStorage(Bitmap bitmapImg){
+    private String saveProfileImgToStorage(Bitmap bitmapImg){
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
         File directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE);
         File mypath = new File(directory,"profile.jpg");
@@ -317,20 +334,26 @@ public class PasswordActivity extends AppCompatActivity {
         return directory.getAbsolutePath();
     }
 
-    // To save data to shared preferences
-    public void saveData(String path){
+    // To save profile picture to shared preferences
+    public void saveProfileImgData(String path){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(PATH, path);
         editor.apply();
     }
-
+    // To save app mode to shared preferences
+    public void saveAppModeData(boolean currentAppMode){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(APP_MODE, currentAppMode);
+        editor.apply();
+    }
     // To load data from shared preferences
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         path = sharedPreferences.getString(PATH, null);
+        appMode = sharedPreferences.getBoolean(APP_MODE, false);
     }
-
     // To load profile img to toolbar
     private void loadFromStorageForToolbarCiv(String path){
         try {
@@ -372,13 +395,13 @@ public class PasswordActivity extends AppCompatActivity {
             Toast.makeText(this, "Image not picked", Toast.LENGTH_SHORT).show();
         }
     }
-    // Async task to save the profile image
+    // Async task class to save the profile image
     private class ProfileDialogOkClickedAsyncTask extends AsyncTask<Bitmap, Void, Void>{
         @Override
         protected Void doInBackground(Bitmap... bitmaps) {
             if(bitmaps[0] != null){
-                String newImgPath = saveToStorage(bitmaps[0]);
-                saveData(newImgPath);
+                String newImgPath = saveProfileImgToStorage(bitmaps[0]);
+                saveProfileImgData(newImgPath);
             }
             return null;
         }

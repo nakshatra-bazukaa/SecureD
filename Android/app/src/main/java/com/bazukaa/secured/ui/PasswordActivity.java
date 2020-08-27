@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -47,6 +48,7 @@ import com.bazukaa.secured.adapters.PasswordAdapter;
 import com.bazukaa.secured.models.PasswordDetails;
 import com.bazukaa.secured.viewmodel.PasswordDetailsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -236,6 +238,7 @@ public class PasswordActivity extends AppCompatActivity {
         Button addFingerUnlockBtn = view.findViewById(R.id.dialog_setting_btn_add_finger_unlock);
         Button seeSrcCodeBtn = view.findViewById(R.id.dialog_setting_btn_see_source_code);
         Button giveFeedbackBtn = view.findViewById(R.id.dialog_setting_btn_feedback);
+        SwitchMaterial switchDarkMode = view.findViewById(R.id.dialog_setting_switch_mode);
         alert.setView(view);
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
@@ -267,7 +270,6 @@ public class PasswordActivity extends AppCompatActivity {
         addFingerUnlockBtn.setOnClickListener(v -> {
             startActivity(new Intent(getBaseContext(), FingerprintAuthenticationActivity.class));
         });
-
         // See source code
         seeSrcCodeBtn.setOnClickListener(v -> {
             Intent seeSrcCodeIntent = new Intent(Intent.ACTION_VIEW);
@@ -282,6 +284,16 @@ public class PasswordActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(sendEmailIntent, "Choose an email client"));
         });
         alertDialog.show();
+        // To switch to dark mode
+        switchDarkMode.setOnClickListener(v -> {
+            if(switchDarkMode.isChecked() == true){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+            startActivity(new Intent(getApplicationContext(), PasswordActivity.class));
+            finish();
+        });
     }
 
     // To save profile img to internal storage

@@ -55,12 +55,18 @@
     <color name="colorButtonTextBoundary">#074576</color>
 
     <!--confirm delete-->
-
-
     <color name="deleteBackground">#FFFFFF</color>
+
     <!--gen password-->
     <color name="textBackground">#dcf4fd</color>
+
     <!--bottom layout-->
     <color name="colorBackgroundLayout">#dcf4fd</color>
     <color name="textBackgroundLayout">#074576</color>
+
+    <!--onboarding-->
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorOnboardingIndicatorInactive">#72BCF7</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
 </resources>

@@ -89,28 +89,29 @@
             <TextView
                 android:id="@+id/card_pwd_ev_tv_pwd"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:paddingBottom="7dp"
+                android:layout_height="65dp"
+                android:paddingBottom="10dp"
+                android:paddingHorizontal="20dp"
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/colorFontWhite"
                 android:text="Tap to copy password"
                 android:gravity="center"
                 android:elevation="4dp"
-                android:background="@drawable/ripple_effect"
+                android:background="@drawable/ripple_blue"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/card_pwd_ev_tv_desc"
                 android:fontFamily="@font/graphik_regular"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_marginTop="20dp"
                 />
             <Button
                 android:id="@+id/card_pwd_ev_btn_pwd_dlt"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:paddingBottom="5dp"
+                android:layout_height="65dp"
+                android:paddingBottom="10dp"
                 android:layout_marginHorizontal="10dp"
-                android:textColor="@color/colorFontDark"
+                android:textColor="@color/colorButtonTextBoundary"
                 android:textAllCaps="false"
                 android:elevation="4dp"
                 android:background="@drawable/ripple_white"
@@ -120,8 +121,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/card_pwd_ev_tv_pwd"
                 android:fontFamily="@font/graphik_regular"
-                android:textSize="20sp"
-                android:layout_marginTop="2dp"/>
+                android:textSize="18sp"
+                android:layout_marginTop="0dp"/>
         </RelativeLayout>
 
     </RelativeLayout>

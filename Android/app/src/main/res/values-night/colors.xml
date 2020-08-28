@@ -8,9 +8,14 @@
     <color name="colorAccepted">#32CD32</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+<!--finger print-->
+    <color name="fingerPrintBackground">#414141</color>
+    <color name="fingerPrintText">#FFFFFF</color>
+
 <!--Font colors-->
     <color name="colorFontWhite">#FFFFFF</color>
     <color name="colorFontDark">#FFFFFF</color>
+
 
     <color name="toolbarColor">#434343</color>
     <color name="toolbarMenuItemColor">#ffffff</color>
@@ -22,5 +27,6 @@
     <color name="fabInsideColor">#252525</color>
     <!--settings colors-->
     <color name="colorUnderline">#FFFFFF</color>
-
+    <!--buttons-->
+    <color name="colorButtonTextBoundary">#074576</color>
 </resources>

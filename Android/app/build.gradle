@@ -62,7 +62,10 @@ dependencies {
 
     // Espresso
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
 
-
+    // Viewpager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
 }

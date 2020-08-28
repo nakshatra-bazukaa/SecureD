@@ -1,5 +1,6 @@
 package com.bazukaa.secured.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
@@ -17,13 +18,19 @@ import android.os.Handler;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bazukaa.secured.R;
 import com.bazukaa.secured.authentication.AuthFingerprintHandler;
 import com.bazukaa.secured.authentication.SetupFingerprintHandler;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyStore;
@@ -67,6 +74,26 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         if(authEnabled){
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(Splash.this, R.style.BottomSheetDialogTheme);
+            View bottomSheetView = getLayoutInflater().inflate(R.layout.layout_bottom_sheet, (LinearLayout)findViewById(R.id.bottomSheetContainer));
+            bottomSheetDialog.setContentView(bottomSheetView);
+            bottomSheetDialog.show();
+            try {
+                Field behaviourField = bottomSheetDialog.getClass().getDeclaredField("behavior");
+                behaviourField.setAccessible(true);
+                final BottomSheetBehavior behavior = (BottomSheetBehavior) behaviourField.get(bottomSheetDialog);
+                behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+                    @Override
+                    public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                        if(newState == BottomSheetBehavior.STATE_DRAGGING){
+                            behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                        }
+                    }
+                    @Override
+                    public void onSlide(@NonNull View bottomSheet, float slideOffset) { }
+                });
+            } catch (NoSuchFieldException |IllegalAccessException e) { e.printStackTrace(); }
+
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
                 keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);

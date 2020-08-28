@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/bottomSheetContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:text="Unlock SecureD"/>
+    <ImageView
+        android:id="@+id/bottom_sheet_img_fingerprint"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:padding="15dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/ic_fingerprint_black_24dp"/>
+    <TextView
+        android:id="@+id/bottom_sheet_tv_fingerprint_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Place finger to unlock" />
+</LinearLayout>

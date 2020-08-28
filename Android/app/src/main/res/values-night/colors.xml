@@ -60,5 +60,8 @@
     <color name="deleteBackground">#414141</color>
     <!--gen password-->
     <color name="textBackground">#FFFFFF</color>
+    <!--bottom layout-->
+    <color name="colorBackgroundLayout">#dcf4fd</color>
+    <color name="textBackgroundLayout">#074576</color>
 
 </resources>

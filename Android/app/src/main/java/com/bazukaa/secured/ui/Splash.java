@@ -61,10 +61,12 @@ public class Splash extends AppCompatActivity {
     public static final String SHARED_PREFERENCE = "sharedPrefs";
     public static final String APP_MODE = "app mode dark/light";
     public static final String FINGERPRINT_AUTH = "fingerprint auth";
+    public static final String FIRST_LAUNCH = "first launch";
 
     // Variables for Shared Preferences
     private Boolean appMode;
     private boolean authEnabled;
+    private boolean firstLaunch;
 
     private static int SPLASH_TIME_OUT = 1000;
     @Override
@@ -74,7 +76,14 @@ public class Splash extends AppCompatActivity {
         setAppMode();
         setContentView(R.layout.activity_splash);
 
-        if(authEnabled){
+        if(firstLaunch){
+            new Handler().postDelayed(() -> {
+                Intent splashIntent = new Intent(Splash.this, OnboardingActivity.class);
+                startActivity(splashIntent);
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                finish();
+            }, SPLASH_TIME_OUT);
+        }else if(authEnabled){
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(Splash.this, R.style.BottomSheetDialogTheme);
             View bottomSheetView = getLayoutInflater().inflate(R.layout.layout_bottom_sheet, (LinearLayout)findViewById(R.id.bottomSheetContainer));
             bottomSheetDialog.setContentView(bottomSheetView);
@@ -133,6 +142,7 @@ public class Splash extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         appMode = sharedPreferences.getBoolean(APP_MODE, false);
         authEnabled = sharedPreferences.getBoolean(FINGERPRINT_AUTH, false);
+        firstLaunch = sharedPreferences.getBoolean(FIRST_LAUNCH, true);
     }
 
     // To set the app mode

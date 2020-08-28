@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnboardingActivity extends AppCompatActivity {
+
+    // Shared preferences
+    public static final String SHARED_PREFERENCE = "sharedPrefs";
+    public static final String FIRST_LAUNCH = "first launch";
 
     private OnboardingAdapter onboardingAdapter;
     private LinearLayout layoutOnboardingIndicators;
@@ -48,15 +53,16 @@ public class OnboardingActivity extends AppCompatActivity {
                 setCurrentOnboardingIndicator(position);
             }
         });
-        buttonOnboardingAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(onboardingViewPager.getCurrentItem() + 1 < onboardingAdapter.getItemCount()){
-                    onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem());
-                }else{
-                    startActivity(new Intent(getApplicationContext(), PasswordActivity.class));
-                    finish();
-                }
+        buttonOnboardingAction.setOnClickListener(v -> {
+            if(onboardingViewPager.getCurrentItem() + 1 < onboardingAdapter.getItemCount()){
+                onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem()+1);
+            }else{
+                SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(FIRST_LAUNCH, false);
+                editor.apply();
+                startActivity(new Intent(getApplicationContext(), PasswordActivity.class));
+                finish();
             }
         });
     }

@@ -11,9 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textStyle="bold"
-        android:text="Unlock SecureD"/>
+        android:textColor="@color/colorPrimaryDark"
+        android:textAllCaps="true"
+        android:textSize="15sp"
+        android:text=" Unlock SecureD"/>
     <ImageView
         android:id="@+id/bottom_sheet_img_fingerprint"
         android:layout_width="72dp"
@@ -25,7 +28,8 @@
         android:id="@+id/bottom_sheet_tv_fingerprint_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_gravity="center_horizontal"
         android:text="Place finger to unlock" />
 </LinearLayout>

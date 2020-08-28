@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/deleteBackground"
     android:orientation="vertical"
     android:gravity="center">
     <TextView
@@ -56,7 +56,7 @@
             android:paddingBottom="0dp"
             android:textSize="20sp"
             android:fontFamily="@font/graphik_semibold"
-            android:textColor="@color/colorFontDark"
+            android:textColor="@color/colorButtonTextBoundary"
             android:textAllCaps="false"
             android:layout_weight="1"/>
 

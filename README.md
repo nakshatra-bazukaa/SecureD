@@ -4,8 +4,7 @@
 <img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/Noted%20icons/0.75x/Asset%204ldpi.png" height="100" width="100">
 
 # Description
-A password generator app implementing room persistence library, live data and MVVM architecture. User can enable fingerprint authentication for app and choose to view the app in light or dark mode as per convenience.
-
+A password generator app implementing room persistence library, live data and MVVM architecture.
 ## Installation
 Clone this repository and import into **Android Studio**
 ```bash
@@ -21,7 +20,7 @@ git clone https://github.com/nakshatra-bazukaa/news-app-2.git
 <img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/SS/Screenshot_20200629-221810%7E2.png" height="360" width="250">
 
 # What does this app do?
-It is an open source Android application that allows people to generate and copy safe and secure passwords.
+It is an open source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented using blockchain technology . The user can generate password by customizing the length , characters etc or choose to generate password by default method. He/She can choose to delete saved passwords as and when required. The user can enable fingerprint authentication for app and choose to view the app in light or dark mode as per convenience.
 
 # Contributions
 Contributions are welcome.

@@ -21,6 +21,7 @@ import android.security.keystore.KeyProperties;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bazukaa.secured.R;
@@ -77,6 +78,7 @@ public class Splash extends AppCompatActivity {
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(Splash.this, R.style.BottomSheetDialogTheme);
             View bottomSheetView = getLayoutInflater().inflate(R.layout.layout_bottom_sheet, (LinearLayout)findViewById(R.id.bottomSheetContainer));
             bottomSheetDialog.setContentView(bottomSheetView);
+            TextView tvLabel = bottomSheetView.findViewById(R.id.bottom_sheet_tv_fingerprint_msg);
             bottomSheetDialog.show();
             try {
                 Field behaviourField = bottomSheetDialog.getClass().getDeclaredField("behavior");
@@ -93,24 +95,23 @@ public class Splash extends AppCompatActivity {
                     public void onSlide(@NonNull View bottomSheet, float slideOffset) { }
                 });
             } catch (NoSuchFieldException |IllegalAccessException e) { e.printStackTrace(); }
-
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
                 keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
                 if(!fingerprintManager.isHardwareDetected()){
-//                    tvLabel.setText("Fingerprint scanner not detected in the Device");
+                    tvLabel.setText("Fingerprint scanner not detected in the Device");
                 }else if(ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED){
-//                    tvLabel.setText("Permission not granted to use Fingerprint Scanner");
+                    tvLabel.setText("Permission not granted to use Fingerprint Scanner");
                 }else if(!keyguardManager.isKeyguardSecure()){
-//                    tvLabel.setText("Add Lock to your Phone in Settings");
+                    tvLabel.setText("Add Lock to your Phone in Settings");
                 }else if(!fingerprintManager.hasEnrolledFingerprints()){
-//                    tvLabel.setText("You should add at least one Fingerprint to use this feature");
+                    tvLabel.setText("You should add at least one Fingerprint to use this feature");
                 }else{
-//                    tvLabel.setText("Place your Finger on Scanner to Access the App");
+                    tvLabel.setText("Place your Finger on Scanner to Access the App");
                     generateKey();
                     if(cipherInit()){
                         FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
-                        AuthFingerprintHandler fingerprintHandler = new AuthFingerprintHandler(this);
+                        AuthFingerprintHandler fingerprintHandler = new AuthFingerprintHandler(this, bottomSheetView);
                         fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
                     }
                 }
@@ -142,6 +143,7 @@ public class Splash extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
+
     @TargetApi(Build.VERSION_CODES.M)
     private void generateKey() {
         try {

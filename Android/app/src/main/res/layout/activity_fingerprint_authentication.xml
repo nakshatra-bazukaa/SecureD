@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FingerprintAuthenticationActivity">
+    tools:context=".ui.FingerprintAuthenticationSetupActivity">
 
 
     <TextView
@@ -35,4 +35,12 @@
         android:padding="20dp"
         android:text="Place your Finger on the Scanner to Proceed"
         android:textAlignment="center" />
+    <Button
+        android:id="@+id/act_finger_print_auth_btn_add_fingerprint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Fingerprint Auth"
+        android:layout_below="@+id/act_finger_print_auth_tv_label"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"></Button>
 </RelativeLayout>

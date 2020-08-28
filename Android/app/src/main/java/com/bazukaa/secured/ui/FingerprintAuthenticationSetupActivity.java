@@ -15,9 +15,10 @@ import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bazukaa.secured.R;
-import com.bazukaa.secured.authentication.FingerprintHandler;
+import com.bazukaa.secured.authentication.SetupFingerprintHandler;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -32,12 +33,11 @@ import java.security.cert.CertificateException;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FingerprintAuthenticationActivity extends AppCompatActivity {
+public class FingerprintAuthenticationSetupActivity extends AppCompatActivity {
 
     @BindView(R.id.act_finger_print_auth_tv_title)
     TextView tvTitle;
@@ -59,7 +59,6 @@ public class FingerprintAuthenticationActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setupFingerprintAuth();
-
     }
     // To check whether the app is ready to use fingerprint auth
     private void setupFingerprintAuth(){
@@ -79,10 +78,12 @@ public class FingerprintAuthenticationActivity extends AppCompatActivity {
                 generateKey();
                 if(cipherInit()){
                     FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
-                    FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
+                    SetupFingerprintHandler fingerprintHandler = new SetupFingerprintHandler(this);
                     fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
                 }
             }
+        }else{
+            Toast.makeText(this, "Your android version is less than Android M", Toast.LENGTH_LONG).show();
         }
     }
 

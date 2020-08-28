@@ -57,7 +57,7 @@
     <!--confirm delete-->
 
 
-    <color name="deleteBackground">#000000</color>
+    <color name="deleteBackground">#414141</color>
     <!--gen password-->
     <color name="textBackground">#FFFFFF</color>
 

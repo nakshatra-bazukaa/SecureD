@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/profile_dialog_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/stt_2"
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Edit your avatar"
+        android:text="  Edit your avatar"
         android:textSize="21sp"
         android:fontFamily="@font/graphik_semibold"
         android:textColor="@color/colorFontDark"
@@ -24,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-
         android:orientation="horizontal"
         android:gravity="center"
         android:visibility="gone"
@@ -33,16 +32,18 @@
         app:layout_constraintTop_toBottomOf="@id/dialog_profile_pic">
         <Button
             android:id="@+id/dialog_profile_btn_rotate_left"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rl"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_rl"
             />
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="0dp"/>
         <Button
             android:id="@+id/dialog_profile_btn_rotate_right"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:paddingRight="20dp"
-            android:background="@drawable/rr"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_rr"
             />
     </LinearLayout>
     <de.hdodenhof.circleimageview.CircleImageView
@@ -50,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:src="@drawable/profile"
-        android:padding="20dp"
+
         app:civ_border_width="2dp"
         app:civ_border_color="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +89,7 @@
         android:id="@+id/dialog_profile_ll_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"

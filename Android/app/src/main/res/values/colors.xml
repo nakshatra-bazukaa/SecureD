@@ -19,7 +19,7 @@
     <color name="colorBlack">#000000</color>
 
     <!--finger print-->
-
+    <color name="scannerColor">#074576</color>
 
     <color name="fingerPrintText">#000000</color>
 

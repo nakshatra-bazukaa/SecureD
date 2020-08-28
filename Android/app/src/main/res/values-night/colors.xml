@@ -1,26 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <resources xmlns:tools="http://schemas.android.com/tools">
+
     <color name="colorPrimary">#414141</color>
+
     <color name="colorPrimaryDark">#252525</color>
+
     <color name="colorAccent">#FFFFFF</color>
+
     <color name="colorPrimaryLight">#434343</color>
+
     <color name="colorError">#FF0000</color>
+
     <color name="colorAccepted">#32CD32</color>
+
     <color name="colorWhite">#ffffff</color>
+
     <color name="colorBlack">#000000</color>
-<!--Font colors-->
+
+    <!--finger print-->
+
+
+    <color name="fingerPrintBackground">#414141</color>
+
+    <color name="fingerPrintText">#FFFFFF</color>
+
+    <!--Font colors-->
+
+
     <color name="colorFontWhite">#FFFFFF</color>
-    <color name="colorFontDark">#074576</color>
+
+    <color name="colorFontDark">#FFFFFF</color>
 
     <color name="toolbarColor">#434343</color>
+
     <color name="toolbarMenuItemColor">#ffffff</color>
 
     <color name="cardBgColor">#414141</color>
+
     <color name="rvBgColor">#252525</color>
 
     <color name="fabColor">#ffffff</color>
+
     <color name="fabInsideColor">#252525</color>
+
     <!--settings colors-->
+
+
     <color name="colorUnderline">#FFFFFF</color>
+
+    <!--buttons-->
+
+
+    <color name="colorButtonTextBoundary">#074576</color>
+
+    <!--confirm delete-->
+
+
+    <color name="deleteBackground">#000000</color>
 
 </resources>

@@ -1,26 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <resources>
+
     <color name="colorPrimary">#93DDFA</color>
+
     <color name="colorPrimaryDark">#074576</color>
+
     <color name="colorAccent">#074576</color>
+
     <color name="colorPrimaryLight">#dcf4fd</color>
+
     <color name="colorError">#FF0000</color>
+
     <color name="colorAccepted">#32CD32</color>
+
     <color name="colorWhite">#ffffff</color>
+
     <color name="colorBlack">#000000</color>
-<!--Font colors-->
+
+    <!--finger print-->
+
+
+    <color name="fingerPrintText">#000000</color>
+
+    <color name="fingerPrintBackground">#DCF4FD</color>
+
+    <!--Font colors-->
+
+
     <color name="colorFontWhite">#FFFFFF</color>
+
     <color name="colorFontDark">#074576</color>
 
     <color name="toolbarColor">#074576</color>
+
     <color name="toolbarMenuItemColor">#ffffff</color>
 
     <color name="cardBgColor">#93DDFA</color>
+
     <color name="rvBgColor">#ffffff</color>
 
     <color name="fabColor">#074576</color>
+
     <color name="fabInsideColor">#ffffff</color>
+
     <!--settings colors-->
-<color name="colorUnderline">#074576</color>
+
+
+    <color name="colorUnderline">#074576</color>
+
+    <!--buttons-->
+
+
+    <color name="colorButtonTextBoundary">#074576</color>
+
+    <!--confirm delete-->
+
+
+    <color name="deleteBackground">#FFFFFF</color>
 
 </resources>

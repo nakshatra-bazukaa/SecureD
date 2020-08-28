@@ -55,7 +55,7 @@ public class SetupFingerprintHandler extends FingerprintManager.AuthenticationCa
         addFingerprintAuth = ((Activity)context).findViewById(R.id.act_finger_print_auth_btn_add_fingerprint);
         loadData();
         if(authEnabled)
-            addFingerprintAuth.setText("Remove Fingerprint Auth");
+            addFingerprintAuth.setText("Disable Fingerprint Auth");
         addFingerprintAuth.setVisibility(View.VISIBLE);
         addFingerprintAuth.setOnClickListener(v -> {
             if(authEnabled)
@@ -69,11 +69,11 @@ public class SetupFingerprintHandler extends FingerprintManager.AuthenticationCa
     private void update(String s, boolean b){
         tvLabel = ((Activity)context).findViewById(R.id.act_finger_print_auth_tv_label);
         fingerprintImg = ((Activity)context).findViewById(R.id.act_finger_print_auth_img_finger);
-
         tvLabel.setText(s);
 
         if(b == false){
             tvLabel.setTextColor(ContextCompat.getColor(context, R.color.colorError));
+            fingerprintImg.setImageResource(R.mipmap.error);
         }else{
             tvLabel.setTextColor(ContextCompat.getColor(context, R.color.colorAccepted));
             fingerprintImg.setImageResource(R.mipmap.done);

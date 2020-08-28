@@ -10,7 +10,7 @@
     <color name="colorBlack">#000000</color>
 <!--Font colors-->
     <color name="colorFontWhite">#FFFFFF</color>
-    <color name="colorFontDark">#FFFFFF</color>
+    <color name="colorFontDark">#074576</color>
 
     <color name="toolbarColor">#434343</color>
     <color name="toolbarMenuItemColor">#ffffff</color>

@@ -36,14 +36,14 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:paddingLeft="20dp"
-            android:background="@drawable/rol"
+            android:background="@drawable/rl"
             />
         <Button
             android:id="@+id/dialog_profile_btn_rotate_right"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:paddingRight="20dp"
-            android:background="@drawable/ror"
+            android:background="@drawable/rr"
             />
     </LinearLayout>
     <de.hdodenhof.circleimageview.CircleImageView

@@ -20,6 +20,7 @@
 
     <color name="fabColor">#ffffff</color>
     <color name="fabInsideColor">#252525</color>
-
+    <!--settings colors-->
+    <color name="colorUnderline">#FFFFFF</color>
 
 </resources>

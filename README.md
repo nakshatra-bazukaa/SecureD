@@ -26,31 +26,31 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 # Screenshots
 
 ##### Splash with and without Fingerprint-Auth
-<img src="Media/Splash/Splash.jpeg" align="left" height="400" width="250"/> <img src="Media/Splash/Splash-Auth.jpeg"  height="400" width="250"/>
+<img src="Media/Splash/Splash.jpeg" align="left" height="500" width="250"/> <img src="Media/Splash/Splash-Auth.jpeg"  height="500" width="250"/>
 <br>
 ##### Main app screen
-<img src="Media/Light/PasswordOptions.jpeg" align="left" height="400" width="250"/> <img src="Media/Night/PasswordOptions.jpeg"  height="400" width="250"/>
+<img src="Media/Light/PasswordOptions.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/PasswordOptions.jpeg"  height="500" width="250"/>
 <br>
 ##### Personalize with Profile Pic
-<img src="Media/Light/ProfileImage.jpeg" align="left" height="1280" width="660"/> <img src="Media/Night/ProfileImage.jpeg"  height="400" width="250"/>
+<img src="Media/Light/ProfileImage.jpeg" align="left" height="500" width="660"/> <img src="Media/Night/ProfileImage.jpeg"  height="500" width="250"/>
 <br>
 ##### Personalize with Profile Name
-<img src="Media/Light/ProfileName.jpeg" align="left" height="400" width="250"/> <img src="Media/Night/ProfileName.jpeg"  height="400" width="250"/>
+<img src="Media/Light/ProfileName.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/ProfileName.jpeg"  height="500" width="250"/>
 <br>
 ##### Generate Password with Default Settings
-<img src="Media/Light/GeneratePwd.jpeg" align="left" height="400" width="250"/> <img src="Media/Night/GeneratePwd.jpeg"  height="400" width="250"/>
+<img src="Media/Light/GeneratePwd.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/GeneratePwd.jpeg"  height="500" width="250"/>
 <br>
 ##### Generate Password with Custom Settings
-<img src="Media/Light/GenerateCustomPwd.jpeg" align="left" height="400" width="250"/> <img src="Media/Night/GenerateCustomPwd.jpeg"  height="400" width="250"/>
+<img src="Media/Light/GenerateCustomPwd.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/GenerateCustomPwd.jpeg"  height="500" width="250"/>
 <br>
 ##### App Settings
-<img src="Media/Light/Settings.jpeg" align="left" height="400" width="250"/> <img src="Media/Night/Settings.jpeg"  height="400" width="250"/>
+<img src="Media/Light/Settings.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/Settings.jpeg"  height="500" width="250"/>
 <br>
 ##### Dialog asking to confirm Delete all passwords
-<img src="Media/Light/DeleteAllDialog.jpeg" align="left" height="400" width="250"/> <img src="Media/Night/DeleteAllDialog.jpeg"  height="400" width="250"/>
+<img src="Media/Light/DeleteAllDialog.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/DeleteAllDialog.jpeg"  height="500" width="250"/>
 <br>
 ##### Enable Fingerprint-Auth
-<img src="Media/Light/FingerprintAuth.jpeg" align="left" height="400" width="250"/> <img src="Media/Night/FingerprintAuth.jpeg"  height="400" width="250"/>
+<img src="Media/Light/FingerprintAuth.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/FingerprintAuth.jpeg"  height="500" width="250"/>
 
 
 

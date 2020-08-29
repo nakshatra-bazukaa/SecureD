@@ -25,8 +25,11 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 [![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)](https://drive.google.com/file/d/13_8VtDW5BD20loahtSm0rWJaAfzGV2CK/view?usp=sharing)
 # Screenshots
 
-##### Splash with and without Fingerprint-Auth
+##### Splash without and with Fingerprint-Auth
 <img src="Media/Splash/Splash.jpeg" align="left" height="500" width="250"/> <img src="Media/Splash/Splash-Auth.jpeg"  height="500" width="250"/>
+<br>
+##### Onboarding Screens
+<img src="Media/Onboarding/1.jpeg" align="left" height="500" width="250"/> <img src="Media/Onboarding/2.jpeg"  height="500" width="250"/> <img src="Media/Onboarding/3.jpeg"  height="500" width="250"/> <img src="Media/Onboarding/4.jpeg"  height="500" width="250"/>
 <br>
 ##### Main app screen
 <img src="Media/Light/PasswordOptions.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/PasswordOptions.jpeg"  height="500" width="250"/>

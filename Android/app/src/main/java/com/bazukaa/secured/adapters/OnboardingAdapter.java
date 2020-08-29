@@ -1,4 +1,4 @@
-package com.bazukaa.secured.onboarding;
+package com.bazukaa.secured.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bazukaa.secured.R;
+import com.bazukaa.secured.models.OnboardingItem;
 
 import java.util.List;
 

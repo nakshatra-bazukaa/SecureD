@@ -7,15 +7,14 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bazukaa.secured.R;
-import com.bazukaa.secured.onboarding.OnboardingAdapter;
-import com.bazukaa.secured.onboarding.OnboardingItem;
+import com.bazukaa.secured.adapters.OnboardingAdapter;
+import com.bazukaa.secured.models.OnboardingItem;
 
 import java.util.ArrayList;
 import java.util.List;

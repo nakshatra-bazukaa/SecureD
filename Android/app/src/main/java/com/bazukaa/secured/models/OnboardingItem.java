@@ -1,4 +1,4 @@
-package com.bazukaa.secured.onboarding;
+package com.bazukaa.secured.models;
 
 public class OnboardingItem {
     private int image;

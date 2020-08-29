@@ -29,7 +29,7 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 <img src="Media/Splash/Splash.jpeg" align="left" height="500" width="250"/> <img src="Media/Splash/Splash-Auth.jpeg"  height="500" width="250"/>
 <br>
 ##### Onboarding Screens
-<img src="Media/Onboarding/1.jpeg" align="left" height="500" width="250"/> <img src="Media/Onboarding/2.jpeg"  height="500" width="250"/> <img src="Media/Onboarding/3.jpeg"  height="500" width="250"/> <img src="Media/Onboarding/4.jpeg"  height="500" width="250"/>
+<img src="Media/Onboarding/OnBoarding1.jpeg" align="left" height="500" width="250"/> <img src="Media/Onboarding/OnBoarding2.jpeg"  height="500" width="250"/> <img src="Media/Onboarding/OnBoarding3.jpeg"  height="500" width="250"/> <img src="Media/Onboarding/OnBoarding4.jpeg"  height="500" width="250"/>
 <br>
 ##### Main app screen
 <img src="Media/Light/PasswordOptions.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/PasswordOptions.jpeg"  height="500" width="250"/>

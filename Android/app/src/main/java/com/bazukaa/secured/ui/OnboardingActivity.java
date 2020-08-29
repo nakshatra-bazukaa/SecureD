@@ -69,23 +69,33 @@ public class OnboardingActivity extends AppCompatActivity {
         List<OnboardingItem> onboardingItems = new ArrayList<>();
 
         OnboardingItem item1 = new OnboardingItem();
-        item1.setTitle("Screen 1");
-        item1.setDescription("Description 1");
+        item1.setTitle("Security");
+        item1.setDescription("Generate safe and secure passwords.\nStore and delete them anytime you want.");
         item1.setImage(R.drawable.o1);
+        item1.setIndexImage(R.drawable.i1);
 
         OnboardingItem item2 = new OnboardingItem();
-        item2.setTitle("Screen 2");
-        item2.setDescription("Description 2");
+        item2.setTitle("Robust");
+        item2.setDescription("SecureD requires no internet connection and runs offline.");
         item2.setImage(R.drawable.o2);
+        item2.setIndexImage(R.drawable.i2);
 
         OnboardingItem item3 = new OnboardingItem();
-        item3.setTitle("Screen 3");
-        item3.setDescription("Description 3");
+        item3.setTitle("Fingerprint Auth");
+        item3.setDescription("Fingerprint authentication can be enabled for additional security.");
         item3.setImage(R.drawable.o3);
+        item3.setIndexImage(R.drawable.i3);
+
+        OnboardingItem item4 = new OnboardingItem();
+        item4.setTitle("Theme");
+        item4.setDescription("Switch between light and dark mode easily");
+        item4.setImage(R.drawable.o4);
+        item4.setIndexImage(R.drawable.i4);
 
         onboardingItems.add(item1);
         onboardingItems.add(item2);
         onboardingItems.add(item3);
+        onboardingItems.add(item4);
 
         onboardingAdapter = new OnboardingAdapter(onboardingItems);
     }

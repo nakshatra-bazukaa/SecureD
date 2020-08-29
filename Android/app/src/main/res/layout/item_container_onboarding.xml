@@ -10,6 +10,13 @@
     android:padding="20dp">
 
     <ImageView
+        android:id="@+id/imagePageNo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="15dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"/>
+    <ImageView
         android:id="@+id/imageOnboarding"
         android:layout_width="260dp"
         android:layout_height="260dp"

@@ -46,7 +46,8 @@ public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.On
 
         private TextView textTitle;
         private TextView textDescription;
-        ImageView imageOnboarding;
+        private ImageView imageOnboarding;
+        private ImageView imageOnboardingIndex;
 
 
         public OnboardingViewHolder(@NonNull View itemView) {
@@ -54,12 +55,14 @@ public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.On
             textTitle = itemView.findViewById(R.id.textTitle);
             textDescription = itemView.findViewById(R.id.textDescription);
             imageOnboarding = itemView.findViewById(R.id.imageOnboarding);
+            imageOnboardingIndex = itemView.findViewById(R.id.imagePageNo);
 
         }
         void setOnboardingData(OnboardingItem onboardingData){
             textTitle.setText(onboardingData.getTitle());
             textDescription.setText(onboardingData.getDescription());
             imageOnboarding.setImageResource(onboardingData.getImage());
+            imageOnboardingIndex.setImageResource(onboardingData.getIndexImage());
         }
     }
 }

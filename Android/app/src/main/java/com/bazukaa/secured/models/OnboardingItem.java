@@ -1,9 +1,18 @@
 package com.bazukaa.secured.models;
 
 public class OnboardingItem {
+    private int indexImage;
     private int image;
     private String title;
     private String description;
+
+    public int getIndexImage() {
+        return indexImage;
+    }
+
+    public void setIndexImage(int indexImage) {
+        this.indexImage = indexImage;
+    }
 
     public int getImage() {
         return image;

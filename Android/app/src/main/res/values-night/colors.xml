@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="colorPrimary">#414141</color>
+
+    <color name="colorPrimaryDark">#252525</color>
+
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="colorPrimaryLight">#434343</color>
+
+    <color name="colorError">#FF0000</color>
+
+    <color name="colorAccepted">#32CD32</color>
+
+    <color name="colorWhite">#ffffff</color>
+
+    <color name="colorBlack">#000000</color>
+
+    <!--finger print-->
+    <color name="scannerColor">#ffffff</color>
+
+    <color name="fingerPrintBackground">#414141</color>
+
+    <color name="fingerPrintText">#FFFFFF</color>
+
+    <!--Font colors-->
+
+
+    <color name="colorFontWhite">#FFFFFF</color>
+
+    <color name="colorFontDark">#FFFFFF</color>
+
+    <color name="toolbarColor">#434343</color>
+
+    <color name="toolbarMenuItemColor">#ffffff</color>
+
+    <color name="cardBgColor">#414141</color>
+
+    <color name="rvBgColor">#252525</color>
+
+    <color name="fabColor">#ffffff</color>
+
+    <color name="fabInsideColor">#252525</color>
+
+    <!--settings colors-->
+
+
+    <color name="colorUnderline">#FFFFFF</color>
+
+    <!--buttons-->
+
+
+    <color name="colorButtonTextBoundary">#074576</color>
+
+    <!--confirm delete-->
+
+
+    <color name="deleteBackground">#414141</color>
+    <!--gen password-->
+    <color name="textBackground">#FFFFFF</color>
+    <!--bottom layout-->
+    <color name="colorBackgroundLayout">#dcf4fd</color>
+    <color name="textBackgroundLayout">#074576</color>
+    <!--on boarding-->
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorOnboardingIndicatorInactive">#074576</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    !--gen pass-->
+    <color name="colorTextDescription">#434343</color>
+    <color name="colorTikBox">#FFFFFF</color>
+</resources>

@@ -4,4 +4,5 @@
     <dimen name="pwdCardTitle">16sp</dimen>
     <dimen name="pwdCardDesc">15sp</dimen>
     <dimen name="pwdCardDate">13sp</dimen>
+    <dimen name="action_button_padding">8dp</dimen>
 </resources>

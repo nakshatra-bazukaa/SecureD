@@ -2,42 +2,32 @@ package com.bazukaa.secured.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +37,7 @@ import com.bazukaa.secured.adapters.PasswordAdapter;
 import com.bazukaa.secured.models.PasswordDetails;
 import com.bazukaa.secured.viewmodel.PasswordDetailsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -69,17 +60,30 @@ public class PasswordActivity extends AppCompatActivity {
     public static final float leftDegrees = -90;
     public static final float rightDegrees = 90;
 
+    // To set app mode
+    public static final boolean DARK_MODE = true;
+    public static final boolean LIGHT_MODE = false;
+
     // Shared preferences
     public static final String SHARED_PREFERENCE = "sharedPrefs";
     public static final String PATH = "path";
+    public static final String APP_MODE = "app mode dark/light";
+    public static final String AVATAR_NAME = "avatar name";
 
     // Viewmodel
     private PasswordDetailsViewModel passwordDetailsViewModel;
 
+    // Variables for profile image
     private Uri imgFilePath;
     private Bitmap imgToStore = null;
     private CircleImageView dialogProfileImg;
+
+    // Variables for Shared Preferences
     private String path;
+    private Boolean appMode;
+    private String avatarName;
+
+    // Variables for different views
     private Toolbar toolbar;
     private LinearLayout rotateBtnLl;
 
@@ -89,7 +93,8 @@ public class PasswordActivity extends AppCompatActivity {
     FloatingActionButton addButton;
     @BindView(R.id.act_pwd_toolbar_civ_profile_image)
     CircleImageView toolbarProfileImg;
-
+    @BindView(R.id.act_pwd_toolbar_tv_profile_name)
+    TextView toolbarProfileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,14 +103,15 @@ public class PasswordActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         loadData();
+        setAvatarName();
         loadFromStorageForToolbarCiv(path);
+
 
         // Setting up toolbar
         toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        // Profile dialog
+        // Profile image dialog
         toolbarProfileImg.setOnClickListener(v -> {
             final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
             View view = getLayoutInflater().inflate(R.layout.profile_dialog, null);
@@ -146,7 +152,6 @@ public class PasswordActivity extends AppCompatActivity {
                 imgToStore = Bitmap.createBitmap(imgToStore, 0, 0, imgToStore.getWidth(), imgToStore.getHeight(), matrix, true);
                 dialogProfileImg.setImageBitmap(imgToStore);
             });
-
             // To save the picked image
             okBtn.setOnClickListener(v1 -> {
                 if(rotateBtnLl.getVisibility() == View.VISIBLE){
@@ -156,24 +161,42 @@ public class PasswordActivity extends AppCompatActivity {
                 }
                 alertDialog.dismiss();
             });
-
             // To cancel the process
             cancelBtn.setOnClickListener(v12 -> alertDialog.dismiss());
+            alertDialog.show();
+        });
+        // Profile name dialog
+        toolbarProfileName.setOnClickListener(v -> {
+            final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
+            View view = getLayoutInflater().inflate(R.layout.name_dialog, null);
+            alert.setView(view);
+
+            EditText enterName = view.findViewById(R.id.name_dialog_et_avatar_name);
+            Button saveBtn = view.findViewById(R.id.name_dialog__btn_save);
+            Button cancelBtn = view.findViewById(R.id.name_dialog__btn_cancel);
+
+            final AlertDialog alertDialog = alert.create();
+            alertDialog.setCanceledOnTouchOutside(false);
+
+            // Save btn clicked
+            saveBtn.setOnClickListener(v16 -> {
+                String name = enterName.getText().toString();
+                toolbarProfileName.setText("Hello " + name);
+                saveAvatarName(name);
+                alertDialog.dismiss();
+            });
+            // Cancel btn clicked
+            cancelBtn.setOnClickListener(v17 -> alertDialog.dismiss());
 
             alertDialog.show();
         });
-
         // Setting up recyclerview
         final PasswordAdapter adapter = new PasswordAdapter();
         passwordDetailsRecyclerView.setAdapter(adapter);
         passwordDetailsViewModel = ViewModelProviders.of(this).get(PasswordDetailsViewModel.class);
-        passwordDetailsViewModel.getPasswordDetailsList().observe(this, new Observer<List<PasswordDetails>>() {
-            @Override
-            public void onChanged(List<PasswordDetails> passwordDetails) {
-                adapter.setPasswords(passwordDetails);
-            }
-        });
-
+        passwordDetailsViewModel.getPasswordDetailsList().observe(this, passwordDetails -> adapter.setPasswords(passwordDetails));
+//        passwordDetailsRecyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
+        // To handle clicks on recycler view
         adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
             // To delete a password
             @Override
@@ -190,8 +213,7 @@ public class PasswordActivity extends AppCompatActivity {
 
                 deleteButton.setOnClickListener(v -> {
                     passwordDetailsViewModel.delete(passwordDetails);
-                    passwordDetailsRecyclerView.removeViewAt(position);
-                    adapter.notifyItemRemoved(position);
+                    adapter.notifyDataSetChanged();
                     alertDialog.dismiss();
                 });
 
@@ -199,7 +221,6 @@ public class PasswordActivity extends AppCompatActivity {
 
                 alertDialog.show();
             }
-
             // To copy pwd to clip board
             @Override
             public void onPwdTvClick(int position) {
@@ -208,14 +229,6 @@ public class PasswordActivity extends AppCompatActivity {
                 ClipData clip = ClipData.newPlainText("Password copied to clipboard", passwordDetails.getPassword());
                 clipboardManager.setPrimaryClip(clip);
                 Toast.makeText(PasswordActivity.this, "Password copied to clipboard", Toast.LENGTH_SHORT).show();
-            }
-
-            // Long press to reveal password
-            @Override
-            public void onPwdTvLongClick(int position) {
-                PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
-                TextView pwdTv = findViewById(R.id.card_pwd_ev_tv_pwd);
-                pwdTv.setText(passwordDetails.getPassword());
             }
         });
     }
@@ -226,23 +239,34 @@ public class PasswordActivity extends AppCompatActivity {
         startActivityForResult(intent, ADD_PASSWORD_REQUEST);
         overridePendingTransition(R.anim.overlay_in, R.anim.still);
     }
-
     // Function to setup and open settings dialog
     public void openSettings(){
         final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
         View view = getLayoutInflater().inflate(R.layout.setting_dialog, null);
         Button dismissBtn = view.findViewById(R.id.dialog_setting_btn_dismiss);
+        TextView switchModeTv = view.findViewById(R.id.dialog_setting_tv_switch);
         Button dltAllPwdBtn = view.findViewById(R.id.dialog_setting_btn_delete_all);
         Button addFingerUnlockBtn = view.findViewById(R.id.dialog_setting_btn_add_finger_unlock);
+        Button appTour = view.findViewById(R.id.dialog_setting_btn_take_tour);
         Button seeSrcCodeBtn = view.findViewById(R.id.dialog_setting_btn_see_source_code);
         Button giveFeedbackBtn = view.findViewById(R.id.dialog_setting_btn_feedback);
+        SwitchMaterial switchDarkMode = view.findViewById(R.id.dialog_setting_switch_mode);
         alert.setView(view);
+
+        // Night/Light mode setup
+        if(appMode == DARK_MODE){
+            switchModeTv.setText("Switch to Light Mode");
+            switchDarkMode.setChecked(true);
+        }else{
+            switchModeTv.setText("Switch to Night Mode");
+            switchDarkMode.setChecked(false);
+        }
+
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
         // Dismiss button click
         dismissBtn.setOnClickListener(v -> alertDialog.dismiss());
-
         // Delete all passwords button click
         dltAllPwdBtn.setOnClickListener(v -> {
             final AlertDialog.Builder alert1 = new AlertDialog.Builder(PasswordActivity.this);
@@ -265,9 +289,13 @@ public class PasswordActivity extends AppCompatActivity {
         });
         // Add fingerprint auth
         addFingerUnlockBtn.setOnClickListener(v -> {
-            startActivity(new Intent(getBaseContext(), FingerprintAuthenticationActivity.class));
+            startActivity(new Intent(getBaseContext(), FingerprintAuthenticationSetupActivity.class));
         });
-
+        // App tour
+        appTour.setOnClickListener(v -> {
+            startActivity(new Intent(PasswordActivity.this, OnboardingActivity.class));
+            finish();
+        });
         // See source code
         seeSrcCodeBtn.setOnClickListener(v -> {
             Intent seeSrcCodeIntent = new Intent(Intent.ACTION_VIEW);
@@ -282,10 +310,19 @@ public class PasswordActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(sendEmailIntent, "Choose an email client"));
         });
         alertDialog.show();
+        // To switch to dark mode
+        switchDarkMode.setOnClickListener(v -> {
+            if(switchDarkMode.isChecked() == true){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                saveAppModeData(DARK_MODE);
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                saveAppModeData(LIGHT_MODE);
+            }
+        });
     }
-
     // To save profile img to internal storage
-    private String saveToStorage(Bitmap bitmapImg){
+    private String saveProfileImgToStorage(Bitmap bitmapImg){
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
         File directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE);
         File mypath = new File(directory,"profile.jpg");
@@ -304,21 +341,34 @@ public class PasswordActivity extends AppCompatActivity {
         }
         return directory.getAbsolutePath();
     }
-
-    // To save data to shared preferences
-    public void saveData(String path){
+    // To save profile picture to shared preferences
+    public void saveProfileImgData(String path){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(PATH, path);
         editor.apply();
     }
-
+    // To save app mode to shared preferences
+    public void saveAppModeData(boolean currentAppMode){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(APP_MODE, currentAppMode);
+        editor.apply();
+    }
+    // Save avatar name to shared preferences
+    public void saveAvatarName(String name){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(AVATAR_NAME, name);
+        editor.apply();
+    }
     // To load data from shared preferences
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         path = sharedPreferences.getString(PATH, null);
+        appMode = sharedPreferences.getBoolean(APP_MODE, false);
+        avatarName = sharedPreferences.getString(AVATAR_NAME, "User");
     }
-
     // To load profile img to toolbar
     private void loadFromStorageForToolbarCiv(String path){
         try {
@@ -327,7 +377,10 @@ public class PasswordActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    // Set avatar name in toolbar
+    private void setAvatarName(){
+        toolbarProfileName.setText("Hello " + avatarName);
+    }
     // Intent results
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -360,13 +413,13 @@ public class PasswordActivity extends AppCompatActivity {
             Toast.makeText(this, "Image not picked", Toast.LENGTH_SHORT).show();
         }
     }
-    // Async task to save the profile image
+    // Async task class to save the profile image
     private class ProfileDialogOkClickedAsyncTask extends AsyncTask<Bitmap, Void, Void>{
         @Override
         protected Void doInBackground(Bitmap... bitmaps) {
             if(bitmaps[0] != null){
-                String newImgPath = saveToStorage(bitmaps[0]);
-                saveData(newImgPath);
+                String newImgPath = saveProfileImgToStorage(bitmaps[0]);
+                saveProfileImgData(newImgPath);
             }
             return null;
         }

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FingerprintAuthenticationActivity">
+    android:gravity="center"
+    android:background="@color/fingerPrintBackground"
+    tools:context=".ui.FingerprintAuthenticationSetupActivity">
 
 
     <TextView
@@ -13,14 +15,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:padding="20dp"
+        android:background="@drawable/fingerprint_und"
         android:text="Fingerprint Authentication"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorFontDark"
         android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/act_finger_print_auth_img_finger"
         android:layout_width="72dp"
+        android:layout_marginTop="20dp"
         android:layout_height="72dp"
         android:layout_below="@+id/act_finger_print_auth_tv_title"
         android:layout_centerHorizontal="true"
@@ -33,6 +36,31 @@
         android:layout_below="@+id/act_finger_print_auth_img_finger"
         android:layout_centerHorizontal="true"
         android:padding="20dp"
-        android:text="Place your Finger on the Scanner to Proceed"
+        android:textColor="@color/fingerPrintText"
+        android:text="Place your Finger on the fingerprint Scanner to Proceed"
         android:textAlignment="center" />
+    <ImageView
+        android:id="@+id/act_finger_print_auth_img_print"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_below="@+id/act_finger_print_auth_tv_label"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_fingerprint_black_24dp"
+        >
+
+    </ImageView>
+    <Button
+        android:id="@+id/act_finger_print_auth_btn_add_fingerprint"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:paddingBottom="5dp"
+        android:textSize="18sp"
+        android:text="Enable Fingerprint Auth"
+        android:textColor="@color/colorFontWhite"
+        android:background="@drawable/ripple_blue"
+        android:layout_below="@+id/act_finger_print_auth_img_print"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"></Button>
 </RelativeLayout>

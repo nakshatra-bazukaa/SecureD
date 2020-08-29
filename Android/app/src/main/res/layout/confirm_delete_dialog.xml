@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/deleteBackground"
 
     android:gravity="center">
     <TextView
@@ -18,34 +19,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center">
         <Button
             android:id="@+id/confirm_delete_dialog_btn_delete"
             android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:paddingBottom="2dp"
-            android:layout_marginHorizontal="5dp"
-            android:textSize="20sp"
-            android:fontFamily="@font/graphik_semibold"
-            android:textColor="@color/colorFontWhite"
+            android:layout_height="73dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="0dp"
             android:text="Delete"
+            android:textSize="20sp"
+            android:paddingBottom="4dp"
+
+            android:textColor="@color/colorFontWhite"
             android:background="@drawable/ripple_blue"
             android:textAllCaps="false"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/confirm_delete_dialog_btn_cancel"
             android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:paddingBottom="2dp"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="5dp"
-            android:textSize="20sp"
-            android:fontFamily="@font/graphik_semibold"
-            android:textColor="@color/colorFontDark"
+            android:layout_marginTop="2.1dp"
+            android:background="@drawable/ripple_c"
             android:text="Cancel"
-            android:background="@drawable/cancel_border"
+            android:paddingBottom="0dp"
+            android:textSize="20sp"
+
+            android:textColor="@color/colorButtonTextBoundary"
             android:textAllCaps="false"
             android:layout_weight="1"/>
 

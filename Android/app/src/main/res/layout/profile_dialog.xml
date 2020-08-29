@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/profile_dialog_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/border"
+    android:layout_height="wrap_content"
+    android:background="@drawable/stt_2"
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Edit your avatar"
+        android:layout_marginTop="10dp"
+        android:text="  Edit your avatar"
         android:textSize="21sp"
         android:fontFamily="@font/graphik_semibold"
         android:textColor="@color/colorFontDark"
@@ -20,8 +21,9 @@
         app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
         android:id="@+id/dialog_profile_ll_btn_rotate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:visibility="gone"
@@ -30,19 +32,18 @@
         app:layout_constraintTop_toBottomOf="@id/dialog_profile_pic">
         <Button
             android:id="@+id/dialog_profile_btn_rotate_left"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_rotate_left_black_24dp"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_rl"
             />
         <Space
-            android:layout_width="16dp"
-            android:layout_height="0dp"
-            />
+            android:layout_width="10dp"
+            android:layout_height="0dp"/>
         <Button
             android:id="@+id/dialog_profile_btn_rotate_right"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_rotate_right_black_24dp"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_rr"
             />
     </LinearLayout>
     <de.hdodenhof.circleimageview.CircleImageView
@@ -50,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:src="@drawable/profile"
-        android:padding="20dp"
+
         app:civ_border_width="2dp"
         app:civ_border_color="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,14 +60,14 @@
         app:layout_constraintBottom_toTopOf="@+id/dialog_profile_ll_btn"/>
     <LinearLayout
         android:id="@+id/dialog_profile_ll_tap_to_edit"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_profile_pic"
-        app:layout_constraintBottom_toTopOf="@+id/dialog_profile_ll_btn">
+        app:layout_constraintStart_toStartOf="@id/dialog_profile_pic_civ_profile"
+        app:layout_constraintEnd_toEndOf="@id/dialog_profile_pic_civ_profile"
+        app:layout_constraintTop_toTopOf="@+id/dialog_profile_pic_civ_profile"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_profile_pic_civ_profile">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/dialog_profile_vector_edit"
             android:layout_width="35dp"
@@ -88,6 +89,7 @@
         android:id="@+id/dialog_profile_ll_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,19 +97,29 @@
         app:layout_constraintBottom_toBottomOf="parent">
         <Button
             android:id="@+id/dialog_profile_btn_ok"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@drawable/sel_"
+            android:layout_width="150dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="3dp"
+            android:text="Save"
+            android:textColor="@color/colorFontWhite"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:background="@drawable/ripple_blue"
             />
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="0dp"
-            />
+
         <Button
             android:id="@+id/dialog_profile_btn_cancel"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@drawable/can_"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:text="Cancel"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:paddingBottom="0dp"
+            android:textColor="@color/colorButtonTextBoundary"
+            android:textAllCaps="false"
+            android:background="@drawable/ripple_c"
             />
     </LinearLayout>
 

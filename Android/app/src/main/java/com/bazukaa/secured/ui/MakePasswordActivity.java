@@ -120,7 +120,7 @@ public class MakePasswordActivity extends AppCompatActivity {
 
     @OnClick(R.id.act_mk_pwd_btn_gen_pwd)
     public void onGeneratePwdButtonClicked(){
-        if(blockLetterSwitch.isChecked() == false &&smallLetterSwitch.isChecked() == false && numSwitch.isChecked() == false && splCharSwitch.isChecked() == false)
+        if(checkBox.isChecked() == true && blockLetterSwitch.isChecked() == false &&smallLetterSwitch.isChecked() == false && numSwitch.isChecked() == false && splCharSwitch.isChecked() == false)
             Toast.makeText(this, "Please select a domain for your password", Toast.LENGTH_SHORT).show();
         else
             savePassword();

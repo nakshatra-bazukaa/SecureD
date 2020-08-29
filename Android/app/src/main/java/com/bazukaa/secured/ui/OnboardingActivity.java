@@ -87,8 +87,8 @@ public class OnboardingActivity extends AppCompatActivity {
         item3.setIndexImage(R.drawable.i3);
 
         OnboardingItem item4 = new OnboardingItem();
-        item4.setTitle("Theme");
-        item4.setDescription("Switch between light and dark mode easily");
+        item4.setTitle("Themes");
+        item4.setDescription("Switch between light and dark themes on the go");
         item4.setImage(R.drawable.o4);
         item4.setIndexImage(R.drawable.i4);
 

@@ -145,7 +145,6 @@ public class PasswordActivity extends AppCompatActivity {
                 imgToStore = Bitmap.createBitmap(imgToStore, 0, 0, imgToStore.getWidth(), imgToStore.getHeight(), matrix, true);
                 dialogProfileImg.setImageBitmap(imgToStore);
             });
-
             // To save the picked image
             okBtn.setOnClickListener(v1 -> {
                 if(rotateBtnLl.getVisibility() == View.VISIBLE){
@@ -155,10 +154,8 @@ public class PasswordActivity extends AppCompatActivity {
                 }
                 alertDialog.dismiss();
             });
-
             // To cancel the process
             cancelBtn.setOnClickListener(v12 -> alertDialog.dismiss());
-
             alertDialog.show();
         });
         // Setting up recyclerview
@@ -197,7 +194,6 @@ public class PasswordActivity extends AppCompatActivity {
 
                 alertDialog.show();
             }
-
             // To copy pwd to clip board
             @Override
             public void onPwdTvClick(int position) {
@@ -207,7 +203,6 @@ public class PasswordActivity extends AppCompatActivity {
                 clipboardManager.setPrimaryClip(clip);
                 Toast.makeText(PasswordActivity.this, "Password copied to clipboard", Toast.LENGTH_SHORT).show();
             }
-
             // Long press to reveal password
             @Override
             public void onPwdTvLongClick(int position) {
@@ -229,6 +224,7 @@ public class PasswordActivity extends AppCompatActivity {
         final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
         View view = getLayoutInflater().inflate(R.layout.setting_dialog, null);
         Button dismissBtn = view.findViewById(R.id.dialog_setting_btn_dismiss);
+        TextView switchModeTv = view.findViewById(R.id.dialog_setting_tv_switch);
         Button dltAllPwdBtn = view.findViewById(R.id.dialog_setting_btn_delete_all);
         Button addFingerUnlockBtn = view.findViewById(R.id.dialog_setting_btn_add_finger_unlock);
         Button seeSrcCodeBtn = view.findViewById(R.id.dialog_setting_btn_see_source_code);
@@ -237,8 +233,10 @@ public class PasswordActivity extends AppCompatActivity {
         alert.setView(view);
 
         if(appMode == DARK_MODE){
+            switchModeTv.setText("Switch to Light Mode");
             switchDarkMode.setChecked(true);
         }else{
+            switchModeTv.setText("Switch to Night Mode");
             switchDarkMode.setChecked(false);
         }
 

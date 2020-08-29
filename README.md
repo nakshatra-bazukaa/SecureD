@@ -1,6 +1,6 @@
 <img src="Media/logo.png" align="right" height="150" width="150" />
 
-# SecureD - A Password Generator/Vault [![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)]()
+# SecureD - A Password Generator/Vault [![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)](https://drive.google.com/file/d/13_8VtDW5BD20loahtSm0rWJaAfzGV2CK/view?usp=sharing)
 
 # Team Members with Discord handles
 1. Nakshatra Gupta (nuke#7232)
@@ -22,7 +22,7 @@ Everyone as all of us needs to store password and use them in future. UI is desi
 We decided to take part in CODE JAM by Tech with Tim, a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
 idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
 # Download the App
-[![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)]()
+[![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)](https://drive.google.com/file/d/13_8VtDW5BD20loahtSm0rWJaAfzGV2CK/view?usp=sharing)
 # Screenshots
 
 ##### Splash with and without Fingerprint-Auth

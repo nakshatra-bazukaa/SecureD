@@ -24,9 +24,33 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 
 # Screenshots
 
+##### Splash with and without Fingerprint-Auth
 <img src="Media/Splash/Splash.png" align="left" height="400" width="250"/> <img src="Media/Splash/Splash-Auth.png"  height="400" width="250"/>
 <br>
+##### Main app screen
 <img src="Media/Light/PasswordOptions.png" align="left" height="400" width="250"/> <img src="Media/Night/PasswordOptions.png"  height="400" width="250"/>
+<br>
+##### Personalize with Profile Pic
+<img src="Media/Light/ProfileImage.png" align="left" height="400" width="250"/> <img src="Media/Night/ProfileImage.png"  height="400" width="250"/>
+<br>
+##### Personalize with Profile Name
+<img src="Media/Light/ProfileName.png" align="left" height="400" width="250"/> <img src="Media/Night/ProfileName.png"  height="400" width="250"/>
+<br>
+##### Generate Password with Default Settings
+<img src="Media/Light/GeneratePwd.png" align="left" height="400" width="250"/> <img src="Media/Night/GeneratePwd.png"  height="400" width="250"/>
+<br>
+##### Generate Password with Custom Settings
+<img src="Media/Light/GenerateCustomPwd.png" align="left" height="400" width="250"/> <img src="Media/Night/GenerateCustomPwd.png"  height="400" width="250"/>
+<br>
+##### App Settings
+<img src="Media/Light/Settings.png" align="left" height="400" width="250"/> <img src="Media/Night/Settings.png"  height="400" width="250"/>
+<br>
+##### Dialog asking to confirm Delete all passwords
+<img src="Media/Light/DeleteAllDialog.png" align="left" height="400" width="250"/> <img src="Media/Night/DeleteAllDialog.png"  height="400" width="250"/>
+<br>
+##### Enable Fingerprint-Auth
+<img src="Media/Light/FingerprintAuth.png" align="left" height="400" width="250"/> <img src="Media/Night/FingerprintAuth.png"  height="400" width="250"/>
+
 
 
 # Contributions

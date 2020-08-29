@@ -63,5 +63,6 @@
     <!--bottom layout-->
     <color name="colorBackgroundLayout">#dcf4fd</color>
     <color name="textBackgroundLayout">#074576</color>
-
+    !--gen pass-->
+    <color name="colorTextDescription">#434343</color>
 </resources>

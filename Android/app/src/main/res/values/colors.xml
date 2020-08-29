@@ -69,4 +69,6 @@
     <color name="colorOnboardingIndicatorInactive">#72BCF7</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
+    <!--gen pass-->
+    <color name="colorTextDescription">#074576</color>
 </resources>

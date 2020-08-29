@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,6 +68,7 @@ public class PasswordActivity extends AppCompatActivity {
     public static final String SHARED_PREFERENCE = "sharedPrefs";
     public static final String PATH = "path";
     public static final String APP_MODE = "app mode dark/light";
+    public static final String AVATAR_NAME = "avatar name";
 
     // Viewmodel
     private PasswordDetailsViewModel passwordDetailsViewModel;
@@ -79,6 +81,7 @@ public class PasswordActivity extends AppCompatActivity {
     // Variables for Shared Preferences
     private String path;
     private Boolean appMode;
+    private String avatarName;
 
     // Variables for different views
     private Toolbar toolbar;
@@ -90,6 +93,8 @@ public class PasswordActivity extends AppCompatActivity {
     FloatingActionButton addButton;
     @BindView(R.id.act_pwd_toolbar_civ_profile_image)
     CircleImageView toolbarProfileImg;
+    @BindView(R.id.act_pwd_toolbar_tv_profile_name)
+    TextView toolbarProfileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,13 +103,15 @@ public class PasswordActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         loadData();
+        setAvatarName();
         loadFromStorageForToolbarCiv(path);
+
 
         // Setting up toolbar
         toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        // Profile dialog
+        // Profile image dialog
         toolbarProfileImg.setOnClickListener(v -> {
             final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
             View view = getLayoutInflater().inflate(R.layout.profile_dialog, null);
@@ -156,6 +163,31 @@ public class PasswordActivity extends AppCompatActivity {
             });
             // To cancel the process
             cancelBtn.setOnClickListener(v12 -> alertDialog.dismiss());
+            alertDialog.show();
+        });
+        // Profile name dialog
+        toolbarProfileName.setOnClickListener(v -> {
+            final AlertDialog.Builder alert = new AlertDialog.Builder(PasswordActivity.this);
+            View view = getLayoutInflater().inflate(R.layout.name_dialog, null);
+            alert.setView(view);
+
+            EditText enterName = view.findViewById(R.id.name_dialog_et_avatar_name);
+            Button saveBtn = view.findViewById(R.id.name_dialog__btn_save);
+            Button cancelBtn = view.findViewById(R.id.name_dialog__btn_cancel);
+
+            final AlertDialog alertDialog = alert.create();
+            alertDialog.setCanceledOnTouchOutside(false);
+
+            // Save btn clicked
+            saveBtn.setOnClickListener(v16 -> {
+                String name = enterName.getText().toString();
+                toolbarProfileName.setText("Hello " + name);
+                saveAvatarName(name);
+                alertDialog.dismiss();
+            });
+            // Cancel btn clicked
+            cancelBtn.setOnClickListener(v17 -> alertDialog.dismiss());
+
             alertDialog.show();
         });
         // Setting up recyclerview
@@ -232,6 +264,7 @@ public class PasswordActivity extends AppCompatActivity {
         SwitchMaterial switchDarkMode = view.findViewById(R.id.dialog_setting_switch_mode);
         alert.setView(view);
 
+        // Night/Light mode setup
         if(appMode == DARK_MODE){
             switchModeTv.setText("Switch to Light Mode");
             switchDarkMode.setChecked(true);
@@ -328,11 +361,19 @@ public class PasswordActivity extends AppCompatActivity {
         editor.putBoolean(APP_MODE, currentAppMode);
         editor.apply();
     }
+    // Save avatar name to shared preferences
+    public void saveAvatarName(String name){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(AVATAR_NAME, name);
+        editor.apply();
+    }
     // To load data from shared preferences
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
         path = sharedPreferences.getString(PATH, null);
         appMode = sharedPreferences.getBoolean(APP_MODE, false);
+        avatarName = sharedPreferences.getString(AVATAR_NAME, "User");
     }
     // To load profile img to toolbar
     private void loadFromStorageForToolbarCiv(String path){
@@ -341,6 +382,10 @@ public class PasswordActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    // Set avatar name in toolbar
+    private void setAvatarName(){
+        toolbarProfileName.setText("Hello " + avatarName);
     }
     // Intent results
     @Override

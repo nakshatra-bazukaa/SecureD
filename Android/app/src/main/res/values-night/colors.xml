@@ -63,6 +63,11 @@
     <!--bottom layout-->
     <color name="colorBackgroundLayout">#dcf4fd</color>
     <color name="textBackgroundLayout">#074576</color>
+    <!--on boarding-->
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorOnboardingIndicatorInactive">#72BCF7</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
     !--gen pass-->
     <color name="colorTextDescription">#434343</color>
 </resources>

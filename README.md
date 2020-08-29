@@ -26,14 +26,15 @@ It is an open source Android application that allows people to generate and copy
 We know how it's not easy to come up with a safe and secure password and then remember it. This app gives you a secure password and keeps it stored for you to copy it
 anytime too. 
 
+# Inspiration for this Project
+We decided to take part in CODE JAM by Tech with Tim , a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
+idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
+
+
 # Project Members
 1. Nakshatra Gupta 
 2. Anand Srivastava
 3. Aanchal Chaurasia
-
-# Inspiration for this Project
-We decided to take part in CODE JAM by Tech with Tim , a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
-idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
 
 # Contributions
 Contributions are welcome.

@@ -259,6 +259,7 @@ public class PasswordActivity extends AppCompatActivity {
         TextView switchModeTv = view.findViewById(R.id.dialog_setting_tv_switch);
         Button dltAllPwdBtn = view.findViewById(R.id.dialog_setting_btn_delete_all);
         Button addFingerUnlockBtn = view.findViewById(R.id.dialog_setting_btn_add_finger_unlock);
+        Button appTour = view.findViewById(R.id.dialog_setting_btn_take_tour);
         Button seeSrcCodeBtn = view.findViewById(R.id.dialog_setting_btn_see_source_code);
         Button giveFeedbackBtn = view.findViewById(R.id.dialog_setting_btn_feedback);
         SwitchMaterial switchDarkMode = view.findViewById(R.id.dialog_setting_switch_mode);
@@ -301,6 +302,11 @@ public class PasswordActivity extends AppCompatActivity {
         // Add fingerprint auth
         addFingerUnlockBtn.setOnClickListener(v -> {
             startActivity(new Intent(getBaseContext(), FingerprintAuthenticationSetupActivity.class));
+        });
+        // App tour
+        appTour.setOnClickListener(v -> {
+            startActivity(new Intent(PasswordActivity.this, OnboardingActivity.class));
+            finish();
         });
         // See source code
         seeSrcCodeBtn.setOnClickListener(v -> {

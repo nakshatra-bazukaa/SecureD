@@ -8,12 +8,12 @@
 3. Anand Srivastav (Anand#7508)
 
 # Project Description
-1. It is an open source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented in Java.
-2. An android app mplementing room persistence library, live data and MDC Components.
+1. It is an open-source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented in Java.
+2. An android app implementing room persistence library, live data, and MDC Components.
 3. App architecture - MVVM architecture.
-4. The user can generate password by customizing the length, characters etc or choose to generate password by default method with a very user friendly UI and amazing security features.
+4. The user can generate a password by customizing the length, characters, etc or choose to generate a password by default method with a very user-friendly UI and amazing security features.
 5. He/She can choose to delete saved passwords as and when required.
-6. The user can enable fingerprint authentication for app and choose to view the app in light or dark mode as per convenience.
+6. The user can enable fingerprint authentication for the app and choose to view the app in light or dark mode as per convenience.
 7. Personalization - User can add his/her Avatar and name in the app (Comfy Settings)
 
 # Who did we design this App for?
@@ -26,31 +26,31 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 # Screenshots
 
 ##### Splash with and without Fingerprint-Auth
-<img src="Media/Splash/Splash.png" align="left" height="400" width="250"/> <img src="Media/Splash/Splash-Auth.png"  height="400" width="250"/>
+<img src="Media/Splash/Splash.jpeg" align="left" height="500" width="250"/> <img src="Media/Splash/Splash-Auth.jpeg"  height="500" width="250"/>
 <br>
 ##### Main app screen
-<img src="Media/Light/PasswordOptions.png" align="left" height="400" width="250"/> <img src="Media/Night/PasswordOptions.png"  height="400" width="250"/>
+<img src="Media/Light/PasswordOptions.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/PasswordOptions.jpeg"  height="500" width="250"/>
 <br>
 ##### Personalize with Profile Pic
-<img src="Media/Light/ProfileImage.png" align="left" height="400" width="250"/> <img src="Media/Night/ProfileImage.png"  height="400" width="250"/>
+<img src="Media/Light/ProfileImage.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/ProfileImage.jpeg"  height="500" width="250"/>
 <br>
 ##### Personalize with Profile Name
-<img src="Media/Light/ProfileName.png" align="left" height="400" width="250"/> <img src="Media/Night/ProfileName.png"  height="400" width="250"/>
+<img src="Media/Light/ProfileName.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/ProfileName.jpeg"  height="500" width="250"/>
 <br>
 ##### Generate Password with Default Settings
-<img src="Media/Light/GeneratePwd.png" align="left" height="400" width="250"/> <img src="Media/Night/GeneratePwd.png"  height="400" width="250"/>
+<img src="Media/Light/GeneratePwd.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/GeneratePwd.jpeg"  height="500" width="250"/>
 <br>
 ##### Generate Password with Custom Settings
-<img src="Media/Light/GenerateCustomPwd.png" align="left" height="400" width="250"/> <img src="Media/Night/GenerateCustomPwd.png"  height="400" width="250"/>
+<img src="Media/Light/GenerateCustomPwd.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/GenerateCustomPwd.jpeg"  height="500" width="250"/>
 <br>
 ##### App Settings
-<img src="Media/Light/Settings.png" align="left" height="400" width="250"/> <img src="Media/Night/Settings.png"  height="400" width="250"/>
+<img src="Media/Light/Settings.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/Settings.jpeg"  height="500" width="250"/>
 <br>
 ##### Dialog asking to confirm Delete all passwords
-<img src="Media/Light/DeleteAllDialog.png" align="left" height="400" width="250"/> <img src="Media/Night/DeleteAllDialog.png"  height="400" width="250"/>
+<img src="Media/Light/DeleteAllDialog.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/DeleteAllDialog.jpeg"  height="500" width="250"/>
 <br>
 ##### Enable Fingerprint-Auth
-<img src="Media/Light/FingerprintAuth.png" align="left" height="400" width="250"/> <img src="Media/Night/FingerprintAuth.png"  height="400" width="250"/>
+<img src="Media/Light/FingerprintAuth.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/FingerprintAuth.jpeg"  height="500" width="250"/>
 
 
 

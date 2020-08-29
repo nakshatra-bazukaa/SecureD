@@ -35,6 +35,10 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
 
     @Override
     public void onBindViewHolder(@NonNull final PasswordHolder holder, int position) {
+
+        // Added to solve the problem of cards to get state from below card
+        holder.setIsRecyclable(false);
+
         PasswordDetails currPwd = passwordDetailsList.get(position);
 
         holder.titleTv.setText(currPwd.getTitle());
@@ -44,18 +48,15 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
         holder.descTv.setText(currPwd.getDetails());
 
         // To handle extendable card behaviour
-        holder.arrDownBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(holder.expandableView.getVisibility() == View.GONE){
-                    TransitionManager.beginDelayedTransition(holder.pwdCard, new AutoTransition());
-                    holder.expandableView.setVisibility(View.VISIBLE);
-                    holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
-                }
-                else{
-                    holder.expandableView.setVisibility(View.GONE);
-                    holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
-                }
+        holder.arrDownBtn.setOnClickListener(v -> {
+            if(holder.expandableView.getVisibility() == View.GONE){
+                TransitionManager.beginDelayedTransition(holder.pwdCard, new AutoTransition());
+                holder.expandableView.setVisibility(View.VISIBLE);
+                holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
+            }
+            else{
+                holder.expandableView.setVisibility(View.GONE);
+                holder.arrDownBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
             }
         });
     }
@@ -91,24 +92,18 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                 }
             });
             // Tap to copy to clipboard setup
-            pwdTv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (listener != null && position != RecyclerView.NO_POSITION){
-                        listener.onPwdTvClick(position);
-                    }
+            pwdTv.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION){
+                    listener.onPwdTvClick(position);
                 }
             });
-            pwdTv.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    int position = getAdapterPosition();
-                    if (listener != null && position != RecyclerView.NO_POSITION){
-                        listener.onPwdTvLongClick(position);
-                    }
-                    return false;
+            pwdTv.setOnLongClickListener(v -> {
+                int position = getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION){
+                    listener.onPwdTvLongClick(position);
                 }
+                return false;
             });
         }
     }

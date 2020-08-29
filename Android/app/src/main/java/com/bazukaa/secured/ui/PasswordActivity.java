@@ -194,12 +194,8 @@ public class PasswordActivity extends AppCompatActivity {
         final PasswordAdapter adapter = new PasswordAdapter();
         passwordDetailsRecyclerView.setAdapter(adapter);
         passwordDetailsViewModel = ViewModelProviders.of(this).get(PasswordDetailsViewModel.class);
-        passwordDetailsViewModel.getPasswordDetailsList().observe(this, new Observer<List<PasswordDetails>>() {
-            @Override
-            public void onChanged(List<PasswordDetails> passwordDetails) {
-                adapter.setPasswords(passwordDetails);
-            }
-        });
+        passwordDetailsViewModel.getPasswordDetailsList().observe(this, passwordDetails -> adapter.setPasswords(passwordDetails));
+//        passwordDetailsRecyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
         // To handle clicks on recycler view
         adapter.setOnItemClickListener(new PasswordAdapter.OnItemClickListener() {
             // To delete a password
@@ -217,8 +213,7 @@ public class PasswordActivity extends AppCompatActivity {
 
                 deleteButton.setOnClickListener(v -> {
                     passwordDetailsViewModel.delete(passwordDetails);
-                    passwordDetailsRecyclerView.removeViewAt(position);
-                    adapter.notifyItemRemoved(position);
+                    adapter.notifyDataSetChanged();
                     alertDialog.dismiss();
                 });
 

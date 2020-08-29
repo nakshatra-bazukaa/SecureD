@@ -22,6 +22,15 @@ git clone https://github.com/nakshatra-bazukaa/news-app-2.git
 # What does this app do?
 It is an open source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented using blockchain technology . The user can generate password by customizing the length , characters etc or choose to generate password by default method. He/She can choose to delete saved passwords as and when required. The user can enable fingerprint authentication for app and choose to view the app in light or dark mode as per convenience.
 
+# Project Members
+1. Nakshatra Gupta 
+2. Anand Srivastava
+3. Aanchal Chaurasia
+
+# Inspiration for this Project
+We decided to take part in CODE JAM by Tech with Tim , a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
+idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
+
 # Contributions
 Contributions are welcome.
 1. Submit an [issue](https://github.com/nakshatra-bazukaa/Noted/issues) describing your proposed fix or feature.

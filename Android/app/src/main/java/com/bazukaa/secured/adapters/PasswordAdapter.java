@@ -98,13 +98,13 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
                     listener.onPwdTvClick(position);
                 }
             });
-            pwdTv.setOnLongClickListener(v -> {
-                int position = getAdapterPosition();
-                if (listener != null && position != RecyclerView.NO_POSITION){
-                    listener.onPwdTvLongClick(position);
-                }
-                return false;
-            });
+//            pwdTv.setOnLongClickListener(v -> {
+//                int position = getAdapterPosition();
+//                if (listener != null && position != RecyclerView.NO_POSITION){
+//                    listener.onPwdTvLongClick(position);
+//                }
+//                return false;
+//            });
         }
     }
 
@@ -116,7 +116,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
     public interface OnItemClickListener{
         void onDeleteButtonClick(int position);
         void onPwdTvClick(int position);
-        void onPwdTvLongClick(int position);
+//        void onPwdTvLongClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){

@@ -230,13 +230,6 @@ public class PasswordActivity extends AppCompatActivity {
                 clipboardManager.setPrimaryClip(clip);
                 Toast.makeText(PasswordActivity.this, "Password copied to clipboard", Toast.LENGTH_SHORT).show();
             }
-            // Long press to reveal password
-            @Override
-            public void onPwdTvLongClick(int position) {
-                PasswordDetails passwordDetails = adapter.getPasswordDetailsFromPosition(position);
-                TextView pwdTv = findViewById(R.id.card_pwd_ev_tv_pwd);
-                pwdTv.setText(passwordDetails.getPassword());
-            }
         });
     }
     // To create a new password

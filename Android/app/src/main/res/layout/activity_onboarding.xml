@@ -15,13 +15,15 @@
         android:layout_marginBottom="15dp"
         android:textSize="15sp"
         app:cornerRadius="20dp"
+        android:textColor="@color/colorWhite"
         android:background="@drawable/onboarding_indicator_active"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/onboardingViewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        />
     <LinearLayout
         android:id="@+id/layoutOnboardingIndicator"
         android:layout_width="0dp"

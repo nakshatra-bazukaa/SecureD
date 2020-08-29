@@ -22,15 +22,11 @@ Everyone as all of us needs to store password and use them in future. UI is desi
 We decided to take part in CODE JAM by Tech with Tim, a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
 idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
 
-## Installation
-Clone this repository and import into **Android Studio**
-```bash
-git clone https://github.com/nakshatra-bazukaa/news-app-2.git
-```
-
 # Screenshots
 
-<img src="Media/Splash/Splash.png" align="left" height="400" width="250"/> | <img src="Media/Splash/Splash-Auth.png"  height="400" width="250"/>
+<img src="Media/Splash/Splash.png" align="left" height="400" width="250"/> <img src="Media/Splash/Splash-Auth.png"  height="400" width="250"/>
+<br>
+<img src="Media/Light/PasswordOptions.png" align="left" height="400" width="250"/> <img src="Media/Night/PasswordOptions.png"  height="400" width="250"/>
 
 
 # Contributions
@@ -41,3 +37,9 @@ Contributions are welcome.
 4. Ensure your code is properly tested.
 5. Ensure your commits follow the **standard commit message style**
 6. Submit a pull request.
+
+## Installation
+Clone this repository and import into **Android Studio**
+```bash
+git clone https://github.com/nakshatra-bazukaa/news-app-2.git
+```

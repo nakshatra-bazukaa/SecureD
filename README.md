@@ -32,7 +32,7 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 <img src="Media/Light/PasswordOptions.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/PasswordOptions.jpeg"  height="500" width="250"/>
 <br>
 ##### Personalize with Profile Pic
-<img src="Media/Light/ProfileImage.jpeg" align="left" height="500" width="660"/> <img src="Media/Night/ProfileImage.jpeg"  height="500" width="250"/>
+<img src="Media/Light/ProfileImage.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/ProfileImage.jpeg"  height="500" width="250"/>
 <br>
 ##### Personalize with Profile Name
 <img src="Media/Light/ProfileName.jpeg" align="left" height="500" width="250"/> <img src="Media/Night/ProfileName.jpeg"  height="500" width="250"/>

@@ -26,7 +26,7 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 # Screenshots
 
 ##### Splash with and without Fingerprint-Auth
-<img src="Media/Splash/Splash.jpg" align="left" height="400" width="250"/> <img src="Media/Splash/Splash-Auth.png"  height="400" width="250"/>
+<img src="Media/Splash/Splash.jpeg" align="left" height="400" width="250"/> <img src="Media/Splash/Splash-Auth.png"  height="400" width="250"/>
 <br>
 ##### Main app screen
 <img src="Media/Light/PasswordOptions.png" align="left" height="400" width="250"/> <img src="Media/Night/PasswordOptions.jpg"  height="400" width="250"/>

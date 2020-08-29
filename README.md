@@ -1,10 +1,27 @@
-# SecureD
+<img src="Media/logo.png" align="right" height="150" width="150" />
 
-# App Icon
-<img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/Noted%20icons/0.75x/Asset%204ldpi.png" height="100" width="100">
+# SecureD - A Password Generator/Vault [![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)]()
 
-# Description
-A password generator app implementing room persistence library, live data and MVVM architecture.
+# Team Members with Discord handles
+1. Nakshatra Gupta (nuke#7232)
+2. Aanchal Chaurasia (AanchalChaurasia#1446)
+3. Anand Srivastav (Anand#7508)
+
+# Project Description
+1. It is an open source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented in Java.
+2. An android app mplementing room persistence library, live data and MDC Components.
+3. App architecture - MVVM architecture.
+4. The user can generate password by customizing the length, characters etc or choose to generate password by default method with a very user friendly UI and amazing security features.
+5. He/She can choose to delete saved passwords as and when required.
+6. The user can enable fingerprint authentication for app and choose to view the app in light or dark mode as per convenience.
+7. Personalization - User can add his/her Avatar and name in the app (Comfy Settings)
+
+# Who did we design this App for?
+Everyone as all of us needs to store password and use them in future. UI is designed in such a way that even a small child can use it efficiently without any confusion. UX is designed for the users on go so that they can use it efficiently.
+# Inspiration for this Project
+We decided to take part in CODE JAM by Tech with Tim, a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
+idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
+
 ## Installation
 Clone this repository and import into **Android Studio**
 ```bash
@@ -13,28 +30,8 @@ git clone https://github.com/nakshatra-bazukaa/news-app-2.git
 
 # Screenshots
 
-<img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/SS/Screenshot_20200629-221403%7E2.png" height="360" width="250">
-<img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/SS/Screenshot_20200629-221702%7E2.png" height="360" width="250">
-<img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/SS/Screenshot_20200629-221706%7E2.png" height="360" width="250">
-<img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/SS/Screenshot_20200629-221733%7E2.png" height="360" width="250">
-<img src="https://github.com/nakshatra-bazukaa/Noted/blob/master/SS/Screenshot_20200629-221810%7E2.png" height="360" width="250">
+<img src="Media/Splash/Splash.png" align="left" height="400" width="250"/> | <img src="Media/Splash/Splash-Auth.png" align="right" height="400" width="250"/>
 
-# What does this app do?
-It is an open source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented using blockchain technology . The user can generate password by customizing the length , characters etc or choose to generate password by default method. He/She can choose to delete saved passwords as and when required. The user can enable fingerprint authentication for app and choose to view the app in light or dark mode as per convenience.
-
-# Who did we make this app for? 
-We know how it's not easy to come up with a safe and secure password and then remember it. This app gives you a secure password and keeps it stored for you to copy it
-anytime too. 
-
-# Inspiration for this Project
-We decided to take part in CODE JAM by Tech with Tim , a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
-idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
-
-
-# Project Members
-1. Nakshatra Gupta 
-2. Anand Srivastava
-3. Aanchal Chaurasia
 
 # Contributions
 Contributions are welcome.

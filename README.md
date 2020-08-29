@@ -21,7 +21,8 @@ Everyone as all of us needs to store password and use them in future. UI is desi
 # Inspiration for this Project
 We decided to take part in CODE JAM by Tech with Tim, a 30 days long hackathon with the theme "Generator". The three of us did a lot of brainstorming and then came up with the 
 idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
-
+# Download the App
+[![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)]()
 # Screenshots
 
 ##### Splash with and without Fingerprint-Auth
@@ -62,7 +63,7 @@ Contributions are welcome.
 5. Ensure your commits follow the **standard commit message style**
 6. Submit a pull request.
 
-## Installation
+## Installation for Contributions
 Clone this repository and import into **Android Studio**
 ```bash
 git clone https://github.com/nakshatra-bazukaa/news-app-2.git

@@ -8,12 +8,12 @@
 3. Anand Srivastav (Anand#7508)
 
 # Project Description
-1. It is an open source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented in Java.
-2. An android app mplementing room persistence library, live data and MDC Components.
+1. It is an open-source Android application that allows people to generate and copy safe and secure passwords using an algorithm implemented in Java.
+2. An android app implementing room persistence library, live data, and MDC Components.
 3. App architecture - MVVM architecture.
-4. The user can generate password by customizing the length, characters etc or choose to generate password by default method with a very user friendly UI and amazing security features.
+4. The user can generate a password by customizing the length, characters, etc or choose to generate a password by default method with a very user-friendly UI and amazing security features.
 5. He/She can choose to delete saved passwords as and when required.
-6. The user can enable fingerprint authentication for app and choose to view the app in light or dark mode as per convenience.
+6. The user can enable fingerprint authentication for the app and choose to view the app in light or dark mode as per convenience.
 7. Personalization - User can add his/her Avatar and name in the app (Comfy Settings)
 
 # Who did we design this App for?

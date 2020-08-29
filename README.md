@@ -30,7 +30,7 @@ git clone https://github.com/nakshatra-bazukaa/news-app-2.git
 
 # Screenshots
 
-<img src="Media/Splash/Splash.png" align="left" height="400" width="250"/> | <img src="Media/Splash/Splash-Auth.png" align="right" height="400" width="250"/>
+<img src="Media/Splash/Splash.png" align="left" height="400" width="250"/> | <img src="Media/Splash/Splash-Auth.png"  height="400" width="250"/>
 
 
 # Contributions

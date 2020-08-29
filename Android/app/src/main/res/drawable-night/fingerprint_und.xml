@@ -7,7 +7,7 @@
         <shape>
             <stroke
                 android:width="1.5dp"
-                android:color="@color/fingerPrintText" />
+                android:color="@color/colorFontDark" />
         </shape>
     </item>
 </layer-list>

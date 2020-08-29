@@ -23,7 +23,7 @@
         android:layout_height="72dp"
         android:padding="15dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/ic_fingerprint_black_24dp"/>
+        android:background="@drawable/ic_auth_fingerprint"/>
     <TextView
         android:id="@+id/bottom_sheet_tv_fingerprint_msg"
         android:layout_width="wrap_content"

@@ -15,10 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-
         android:background="@drawable/fingerprint_und"
         android:text="Fingerprint Authentication"
-        android:textColor="@color/fingerPrintText"
+        android:textColor="@color/colorFontDark"
         android:textSize="24sp" />
 
     <ImageView

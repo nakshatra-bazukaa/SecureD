@@ -23,6 +23,42 @@ We decided to take part in CODE JAM by Tech with Tim, a 30 days long hackathon w
 idea of a "Password Generator" app. We came up with quite a few challenges and learnt a lot solving them. 
 # Download the App
 [![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)](https://drive.google.com/file/d/13_8VtDW5BD20loahtSm0rWJaAfzGV2CK/view?usp=sharing)
+# Project Structure
+```bash
+.
+└── bazukaa
+    └── secured
+        ├── adapters
+        │   ├── OnboardingAdapter.java
+        │   └── PasswordAdapter.java
+        ├── authentication
+        │   ├── AuthFingerprintHandler.java
+        │   └── SetupFingerprintHandler.java
+        ├── db
+        │   ├── PasswordDetailsDao.java
+        │   └── PasswordDetailsDatabase.java
+        ├── models
+        │   ├── OnboardingItem.java
+        │   └── PasswordDetails.java
+        ├── repository
+        │   ├── PasswordDetailsAsyncTask.java
+        │   └── PasswordDetailsRepository.java
+        ├── ui
+        │   ├── FingerprintAuthenticationSetupActivity.java
+        │   ├── MakePasswordActivity.java
+        │   ├── OnboardingActivity.java
+        │   ├── PasswordActivity.java
+        │   └── Splash.java
+        ├── util
+        │   ├── PasswordGenerator.java
+        │   └── TimeFromTimeStamp.java
+        ├── viewmodel
+        │   └── PasswordDetailsViewModel.java
+        └── viewmodelhelper
+            └── PasswordDetailsViewModelHelper.java
+
+```
+
 # Screenshots
 
 ##### Splash without and with Fingerprint-Auth

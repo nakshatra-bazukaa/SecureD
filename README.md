@@ -1,6 +1,7 @@
 <img src="Media/logo.png" align="right" height="150" width="150" />
 
-# SecureD - A Password Generator/Vault [![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)](https://drive.google.com/file/d/13_8VtDW5BD20loahtSm0rWJaAfzGV2CK/view?usp=sharing)
+# SecureD - A Password Generator/Vault [![Generic badge](https://img.shields.io/badge/SecureD-Download-<COLOR>.svg)](https://drive.google.com/file/d/13_8VtDW5BD20loahtSm0rWJaAfzGV2CK/view?usp=sharing) 
+#### Requires Android 8 or greater to run!
 
 # Team Members with Discord handles
 1. Nakshatra Gupta (nuke#7232)

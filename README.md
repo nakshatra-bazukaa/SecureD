@@ -98,7 +98,7 @@ idea of a "Password Generator" app. We came up with quite a few challenges and l
 
 # Contributions
 Contributions are welcome.
-1. Submit an [issue](https://github.com/nakshatra-bazukaa/Noted/issues) describing your proposed fix or feature.
+1. Submit an [issue](https://github.com/nakshatra-bazukaa/SecureD/issues) describing your proposed fix or feature.
 2. If your proposed fix or feature is accepted then, fork, implement your code change.
 3. Ensure your code change follows the **standard code style and structure**.
 4. Ensure your code is properly tested.
@@ -108,5 +108,5 @@ Contributions are welcome.
 ## Installation for Contributions
 Clone this repository and import into **Android Studio**
 ```bash
-git clone https://github.com/nakshatra-bazukaa/news-app-2.git
+git clone https://github.com/nakshatra-bazukaa/SecureD.git
 ```
